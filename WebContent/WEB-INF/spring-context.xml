@@ -13,7 +13,7 @@
 						http://www.springframework.org/schema/aop
 						http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-	<context:component-scan base-package="br.com.cotasmart.factory" />
+	<context:component-scan base-package="br.com.cotasmart" />
 	<mvc:annotation-driven />
 	<mvc:default-servlet-handler />
 	<bean
