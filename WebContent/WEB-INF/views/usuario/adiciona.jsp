@@ -1,29 +1,14 @@
-<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Adicionar Usuário</title>
-<!--Import Google Icon Font-->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-<!--Import materialize.css-->
-<link type="text/css" rel="stylesheet" href="css/materialize.min.css"
-	media="screen,projection" />
-
-<!--Let browser know website is optimized for mobile-->
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<link rel="stylesheet" type="text/css" href="css/estilo.css">
-
-<!-- TESTE TESTE  -->
+	<c:import url="iniciarHead.jsp" />
 </head>
 <body>
-	<!--Import jQuery before materialize.js-->
-	<script type="text/javascript"
-		src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script type="text/javascript" src="js/materialize.min.js"></script>
-
-
+	<c:import url="iniciarBody.jsp" />
+	
+<%-- 	<%@include file ="WebContent/ %> --%>
 	<!-- Inicio do formulário -->
 	<form class="centralizado" action="adicionaUsuario">
 		<h5>Adicionar Usuário</h5>

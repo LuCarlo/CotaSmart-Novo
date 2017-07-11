@@ -1,4 +1,5 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +7,8 @@
 <title>Adicionar Fornecedor</title>
 </head>
 <body>
-	<c:import url="cabecalho.jsp" />
+	<c:import url="geral/cabecalho.jsp" />
+	
 	<!-- Inicio do formulário -->
 	<form name="form" class="centralizado" action="adicionaFornecedor">
 		<h5 class="centralizarTexto">Cadastrar Fornecedor</h5>
