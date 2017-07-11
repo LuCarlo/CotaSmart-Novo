@@ -4,10 +4,36 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet" href="css/materialize.min.css"
+	media="screen,projection" />
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="stylesheet" type="text/css" href="css/estilo.css">
+
 <title>Adicionar Fornecedor</title>
 </head>
 <body>
+<<<<<<< HEAD
+<<<<<<< HEAD
+		<!--Import jQuery before materialize.js-->
+	<script type="text/javascript"
+		src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/materialize.min.js"></script>
+	
+	
+=======
 	<c:import url="geral/cabecalho.jsp" />
+>>>>>>> b726df744e32e343173ae38927da1b76f40450d1
+=======
+	<c:import url="geral/cabecalho.jsp" />
+>>>>>>> b726df744e32e343173ae38927da1b76f40450d1
 	
 	<!-- Inicio do formulário -->
 	<form name="form" class="centralizado" action="adicionaFornecedor">
@@ -70,6 +96,6 @@
 		</div>
 	</form>
 
-	<c:import url="rodape.jsp" />
+	
 </body>
 </html>
