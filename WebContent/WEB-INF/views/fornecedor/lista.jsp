@@ -9,8 +9,7 @@
 <title>Empresas cadastradas</title>
 </head>
 <body>
-<jsp:useBean id="dao" class="br.com.cotasmart.dao"/>
-
+<a href="novoFornecedor">Cadastrar Fornecedor</a>
 	<table border=1;>
 		<tr>
 			<th>ID</th>
@@ -20,16 +19,19 @@
 			<th>CELULAR</th>
 			<th>TELEFONE</th>
 			<th>TELEFONE COMERCIAL</th>
+			<th>EXCLUIR/ALTERAR</th>
 		</tr>
-		<c:forEach items="${dao.lista}" var="fornecedor">
+		<c:forEach items="${fornecedores}" var="fornecedor">
 		<tr>
-			<td>${fornecedor.CodFornecedor}</td>
+			<td>${fornecedor.codFornecedor}</td>
 			<td>${fornecedor.nome}</td>
 			<td>${fornecedor.cnpj}</td>
 			<td>${fonecedor.endereco}</td>
 			<td>${fornecedor.telefone1}</td>
 			<td>${fornecedor.telefone2}</td>
 			<td>${fornecedor.telefone3}</td>
+			<td><a href="removeFornecedor?codfornecedor=${fornecedor.codFornecedor}">Remover</a>
+				<a href="mostraFornecedor?codfornecedor=${fornecedor.codFornecedor}">Alterar</a></td>
 		</tr>
 		</c:forEach>
 	</table>

@@ -67,7 +67,7 @@ public class FornecedorDao {
 	}
 	
 	public void remove(Fornecedor fornecedor){
-		String sql = "delete from fornecedores where id=?";
+		String sql = "delete from fornecedores where codfornecedor=?";
 		
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);

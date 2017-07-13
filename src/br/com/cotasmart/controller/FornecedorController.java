@@ -19,7 +19,7 @@ public class FornecedorController {
 	public String adiciona(Fornecedor fornecedor){
 		FornecedorDao dao = new FornecedorDao();
 		dao.adiciona(fornecedor);
-		return "fornecedor/lista";
+		return "fornecedor/adiciona";
 	}
 	
 	@RequestMapping("listaFornecedor")
@@ -28,5 +28,20 @@ public class FornecedorController {
 		model.addAttribute("fornecedores", dao.getLista());
 		return "fornecedor/lista";
 		
+	}
+	
+	@RequestMapping("removeFornecedor")
+	public String remove(Fornecedor fornecedor){
+		FornecedorDao dao = new FornecedorDao();
+		dao.remove(fornecedor);
+		return "redirect:listaFornecedor";
+	}
+	
+	
+	@RequestMapping("alteraFornecedor")
+	public String altera(Fornecedor fornecedor){
+		FornecedorDao dao = new FornecedorDao();
+		dao.altera(fornecedor);
+		return "redirect:listaFornecedor";
 	}
 }

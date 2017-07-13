@@ -20,21 +20,14 @@
 <title>Adicionar Fornecedor</title>
 </head>
 <body>
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 		<!--Import jQuery before materialize.js-->
 	<script type="text/javascript"
 		src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>
 	
-	
-=======
-	<c:import url="geral/cabecalho.jsp" />
->>>>>>> b726df744e32e343173ae38927da1b76f40450d1
-=======
-	<c:import url="geral/cabecalho.jsp" />
->>>>>>> b726df744e32e343173ae38927da1b76f40450d1
-	
+	<a href="listaFornecedor">Consultar fornecedores cadastrados</a>
+		
 	<!-- Inicio do formulário -->
 	<form name="form" class="centralizado" action="adicionaFornecedor">
 		<h5 class="centralizarTexto">Cadastrar Fornecedor</h5>
