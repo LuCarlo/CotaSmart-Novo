@@ -5,13 +5,21 @@
 }
 
 body {
-  background: #FAF7F7;
+	background: #FAF7F7;
 }
 
 .centralizado {
-  margin: 0 auto;
-  width: 600px;
-/*   background: #48304D; */
-  padding: 20px;
-  color: black;
+	margin: 0 auto;
+	width: 600px;
+	/*   background: #48304D; */
+	padding: 20px;
+	color: black;
+}
+
+.divLista {
+	margin-top: 60px;
+	width: 600px;
+	padding: 20px;
+	
+}
 }

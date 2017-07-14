@@ -34,6 +34,7 @@ public class FornecedorController {
 	public String remove(Fornecedor fornecedor){
 		FornecedorDao dao = new FornecedorDao();
 		dao.remove(fornecedor);
+		System.out.println("TESTE id=" +fornecedor.getCodFornecedor());
 		return "redirect:listaFornecedor";
 	}
 	

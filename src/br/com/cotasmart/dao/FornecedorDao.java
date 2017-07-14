@@ -125,4 +125,22 @@ public class FornecedorDao {
 		
 		return false;
 	}
+	
+	public boolean vereficaID(int codFornecedor){
+		String sql="Select * from fornecedores where codfornecedor=?";
+		
+		try{
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setInt(1, codFornecedor);
+			ResultSet rs = stmt.executeQuery();
+			
+			if(rs.next()){
+				return true;
+			}
+			
+		}catch(SQLException e){
+			throw new RuntimeException(e);
+		}
+		return false;
+	}
 }

@@ -8,15 +8,16 @@ public class TestarDao {
 	public static void main(String[] args) {
 		
 		Fornecedor f = new Fornecedor();
-		f.setNome("TESTE");
-		f.setTelefone1("3388-1515");
-		f.setTelefone2("3388-1515");
-		f.setTelefone3("3388-1515");
-		f.setCnpj("0000000000000");
-		f.setEndereco("Q4 00");
-		
+		f.setCodFornecedor(34);
+//		f.setNome("TESTE");
+//		f.setTelefone1("3388-1515");
+//		f.setTelefone2("3388-1515");
+//		f.setTelefone3("3388-1515");
+//		f.setCnpj("0000000000000");
+//		f.setEndereco("Q4 00");
+//		
 		FornecedorDao dao = new FornecedorDao();
-		dao.adiciona(f);
+		dao.remove(f);
 		
 		System.out.println("Conectado");
 
