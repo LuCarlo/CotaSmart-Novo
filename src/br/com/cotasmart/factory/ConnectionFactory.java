@@ -9,7 +9,7 @@ public class ConnectionFactory {
 		String driver = "org.postgresql.Driver";
 		String usuario = "postgres";
 		String senha = "juizladrao";
-		String url = "jdbc:postgresql://10.1.1.255:5433/CotaSmart";
+		String url = "jdbc:postgresql://localhost:5432/CotaSmart";
 
 		System.out.println("Tentando Conectar....");
 		try {

@@ -3,12 +3,11 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Adicionar Usuário</title>
-	<c:import url="iniciarHead.jsp" />
+	<c:import url="../layout/iniciarHead.jsp" />
 </head>
 <body>
-	<c:import url="iniciarBody.jsp" />
+	<c:import url="../layout/iniciarBody.jsp" />
 	
-<%-- 	<%@include file ="WebContent/ %> --%>
 	<!-- Inicio do formulário -->
 	<form class="centralizado" action="adicionaUsuario">
 		<h5>Adicionar Usuário</h5>
@@ -34,7 +33,7 @@
 		</div>
 		<!-- Status -->
 		<p>
-			<input type="checkbox" id="status" /> <label for="status">Ativo</label>
+			<input type="checkbox" name="status" /> <label for="status">Ativo</label>
 		</p>
 		<p>
 			<!-- Grupo de usuário -->
