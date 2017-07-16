@@ -16,11 +16,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <link rel="stylesheet" type="text/css" href="css/estilo.css">
-
+<c:import url="../layout/iniciarHead.jsp" />
 <title>Adicionar Fornecedor</title>
 </head>
 <body>
-
+	<c:import url="../layout/iniciarBody.jsp" />
 		<!--Import jQuery before materialize.js-->
 	<script type="text/javascript"
 		src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -29,7 +29,7 @@
 	<a href="listaFornecedor">Consultar fornecedores cadastrados</a>
 		
 	<!-- Inicio do formulário -->
-	<form name="form" class="centralizado" action="adicionaFornecedor">
+	<form name="form" class="centralizado" action="adicionaFornecedor" method="post">
 		<h5 class="centralizarTexto">Cadastrar Fornecedor</h5>
 		<br />
 		<!-- Nome -->

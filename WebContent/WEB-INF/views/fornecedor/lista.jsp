@@ -11,10 +11,11 @@
 	media="screen,projection" />
 	<script type="text/javascript" src="js/materialize.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/estilo.css">
+	<c:import url="../layout/iniciarHead.jsp" />
 <title>Empresas cadastradas</title>
 </head>
 <body>
-
+	<c:import url="../layout/iniciarBody.jsp" />
 	
 	<div style="width: 1300px; height: 86px; margin-top: 35px; margin-left: 45px; ">
 	<a href="novoFornecedor">Cadastrar Fornecedor</a>

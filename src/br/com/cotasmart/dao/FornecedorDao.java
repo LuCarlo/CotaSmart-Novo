@@ -126,21 +126,39 @@ public class FornecedorDao {
 		return false;
 	}
 	
-	public boolean vereficaID(int codFornecedor){
-		String sql="Select * from fornecedores where codfornecedor=?";
-		
-		try{
-			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setInt(1, codFornecedor);
+	public Fornecedor buscaPorId(Long codFornecedor) {
+
+		if (codFornecedor == null) {
+			throw new IllegalStateException("Id da tarefa não deve ser nula.");
+		}
+
+		try {
+			PreparedStatement stmt = this.connection
+					.prepareStatement("select * from fornecedores where codfornecedor = ?");
+			stmt.setLong(1, codFornecedor);
+
 			ResultSet rs = stmt.executeQuery();
-			
-			if(rs.next()){
-				return true;
+
+			if (rs.next()) {
+				
+				Fornecedor fornecedor = new Fornecedor();
+				fornecedor.setCodFornecedor(rs.getInt("codFornecedor"));
+				fornecedor.setNome(rs.getString("nome"));
+				fornecedor.setCnpj(rs.getString("cnpj"));
+				fornecedor.setEndereco(rs.getString("endereco"));
+				fornecedor.setTelefone1(rs.getString("telefone1"));
+				fornecedor.setTelefone2(rs.getString("telefone2"));
+				fornecedor.setTelefone3(rs.getString("telefone3"));
+
 			}
-			
-		}catch(SQLException e){
+
+			rs.close();
+			stmt.close();
+
+			return null;
+		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-		return false;
 	}
+	
 }

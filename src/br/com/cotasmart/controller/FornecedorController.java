@@ -45,4 +45,10 @@ public class FornecedorController {
 		dao.altera(fornecedor);
 		return "redirect:listaFornecedor";
 	}
+	@RequestMapping("mostraFornecedor")
+	public String mostra(Long codFornecedor, Model model){
+		FornecedorDao dao = new FornecedorDao();
+		model.addAttribute("tarefa", dao.buscaPorId(codFornecedor));
+		return "tarefa/mostra";
+	}
 }
