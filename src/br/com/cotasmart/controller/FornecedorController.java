@@ -48,7 +48,7 @@ public class FornecedorController {
 	@RequestMapping("mostraFornecedor")
 	public String mostra(Long codFornecedor, Model model){
 		FornecedorDao dao = new FornecedorDao();
-		model.addAttribute("tarefa", dao.buscaPorId(codFornecedor));
+		model.addAttribute("fornecedores", dao.buscaPorId(codFornecedor));
 		return "tarefa/mostra";
 	}
 }
