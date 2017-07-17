@@ -28,18 +28,26 @@
 		src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>
 
-
-
-
-
-	<h3>Alterar tarefa - ${fornecedor.codFornecedor}</h3>
-	<form action="alterafornecedor" method="post">
-		<input type="hidden" name="id" value="${fornecedor.codFornecedor}" />
-		Descrição:<br />
-		<textarea name="descricao" cols="100" rows="5"><%--
---%>${fornecedor.nome}<%--
---%></textarea>
-		<br /> <br /> <input type="submit" value="Alterar" />
-		</form>
-</body>
+	<form action="alteraFornecedor">
+		<input value="${fornecedor.nome}" />
+	</form>
+	
+	
+	
+	
+	
+<%-- 		<h3>Alterar tarefa - ${fornecedor.codFornecedor}</h3> --%>
+<!-- 	<form action="alterafornecedor" method="post"> -->
+<%-- 		<input type="hidden" name="id" value="${fornecedor.codFornecedor}" /> --%>
+<!-- 		Descrição:<br /> -->
+<%-- 		<textarea name="descricao" cols="100" rows="5">
+<%-- <%-- --%>${fornecedor.nome} --%>
+<%--</textarea> --%> --%>
+<!-- 		<br /> <br /> <input type="submit" value="Alterar" /> -->
+<!-- 		</form> -->
+	
+	
+	
+	
+	
 </html>

@@ -47,7 +47,7 @@ public class FornecedorDao {
 	
 	public void altera(Fornecedor fornecedor){
 		String sql = "update fornecedores set nome=?, endereco=?, telefone1=?," +
-						"telefone2=?, telefone3=?, cnpj=?";
+						"telefone2=?, telefone3=?, cnpj=? where codFornecedor=?";
 		
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
@@ -57,6 +57,7 @@ public class FornecedorDao {
 			stmt.setString(4, fornecedor.getTelefone2());
 			stmt.setString(5, fornecedor.getTelefone3());
 			stmt.setString(6, fornecedor.getCnpj());
+			stmt.setLong(7, fornecedor.getCodFornecedor());
 			
 			stmt.execute();
 		} catch (SQLException e) {

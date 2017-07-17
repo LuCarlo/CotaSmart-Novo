@@ -37,14 +37,14 @@ public class FornecedorController {
 		System.out.println("TESTE id=" +fornecedor.getCodFornecedor());
 		return "redirect:listaFornecedor";
 	}
-	
-	
+		
 	@RequestMapping("alteraFornecedor")
 	public String altera(Fornecedor fornecedor){
 		FornecedorDao dao = new FornecedorDao();
 		dao.altera(fornecedor);
 		return "redirect:listaFornecedor";
 	}
+	
 	@RequestMapping("mostraFornecedor")
 	public String mostra(Long codFornecedor, Model model){
 		FornecedorDao dao = new FornecedorDao();
