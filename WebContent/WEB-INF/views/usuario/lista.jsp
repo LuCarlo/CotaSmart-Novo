@@ -17,12 +17,14 @@
 			<th></th>
 			<th>Login</th>
 			<th>Nome</th>
+			<th>Ação</th>
 		</tr>
 		<c:forEach items="${usuarios}" var="usuario">
 			<tr>
 				<td><input type="checkbox"></td>
 				<td>${usuario.login}</td>
-				<td>${usuario.nome}</td>
+				<td><a href="mostraUsuario?codUsuario=${usuario.codUsuario}">${usuario.nome}</a></td>
+				<td><a href="removeUsuario?codUsuario=${usuario.codUsuario}">Remover</a></td>
 			</tr>
 		</c:forEach>
 

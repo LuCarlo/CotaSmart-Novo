@@ -34,4 +34,27 @@ public class UsuarioController {
 		return "usuario/lista";
 
 	}
+
+	@RequestMapping("removeUsuario")
+	public String remove(Usuario usuario) {
+		UsuarioDao dao = new UsuarioDao();
+		dao.exclui(usuario);
+		return "redirect:listaUsuario";
+	}
+
+	@RequestMapping("mostraUsuario")
+	public String mostra(Long codUsuario, Model model) {
+		UsuarioDao dao = new UsuarioDao();
+		model.addAttribute("usuario", dao.buscaPorId(codUsuario));
+		return "usuario/mostra";
+	}
+
+	@RequestMapping("atualizarUsuario")
+	public String atualiza(Usuario usuario) {
+		UsuarioDao dao = new UsuarioDao();
+		dao.altera(usuario);
+		return "redirect:listaUsuario";
+
+	}
+
 }

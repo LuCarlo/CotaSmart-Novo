@@ -2,6 +2,10 @@ package br.com.cotasmart.modelo;
 
 public class Usuario {
 	private Long codUsuario;
+	public void setCodUsuario(Long codUsuario) {
+		this.codUsuario = codUsuario;
+	}
+
 	private String nome;
 	private String login;
 	private String senha;

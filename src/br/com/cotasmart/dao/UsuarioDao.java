@@ -29,8 +29,8 @@ public class UsuarioDao {
 			stmt.setString(1, usuario.getNome());
 			stmt.setString(2, usuario.getLogin());
 			stmt.setString(3, usuario.getSenha());
-//			stmt.setLong(4, usuario.getCodStatus());
-//			stmt.setLong(5, usuario.getCodGrupo());
+			// stmt.setLong(4, usuario.getCodStatus());
+			// stmt.setLong(5, usuario.getCodGrupo());
 
 			stmt.execute();
 
@@ -42,12 +42,15 @@ public class UsuarioDao {
 	}
 
 	public void altera(Usuario usuario) {
-		String sql = "UPDATE usuarios SET " + "senha = ?, " + "codStatus = ?," + "codGrupo = ? ";
+		String sql = "UPDATE usuarios SET " +
+					 "nome= ?, " +
+					 "senha = ? "; 
+					 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setString(1, usuario.getSenha());
-			stmt.setLong(2, usuario.getCodStatus());
-			stmt.setLong(3, usuario.getCodGrupo());
+			stmt.setString(1, usuario.getNome());
+			stmt.setString(2, usuario.getSenha());
+//			stmt.setLong(3, usuario.getCodGrupo());
 
 			stmt.execute();
 		} catch (SQLException e) {
@@ -79,6 +82,7 @@ public class UsuarioDao {
 				Usuario usuario = new Usuario();
 				usuario.setLogin(rs.getString("login"));
 				usuario.setNome(rs.getString("nome"));
+				usuario.setCodUsuario(rs.getLong("codUsuario"));
 				usuarios.add(usuario);
 			}
 			rs.close();
@@ -88,4 +92,29 @@ public class UsuarioDao {
 			throw new RuntimeException(e);
 		}
 	}
+
+	public Usuario buscaPorId(Long codUsuario) {
+		try {
+			PreparedStatement stmt = this.connection.prepareStatement("SELECT * FROM usuarios WHERE codUsuario = ?");
+			stmt.setLong(1, codUsuario);
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+				Usuario usuario = new Usuario();
+				usuario.setCodGrupo(rs.getInt("codGrupo"));
+				usuario.setCodStatus(rs.getInt("codStatus"));
+				usuario.setCodUsuario(rs.getLong("codUsuario"));
+				usuario.setLogin(rs.getString("login"));
+				usuario.setNome(rs.getString("nome"));
+				usuario.setSenha("senha");
+
+				return usuario;
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		//Caso não encontre nenhum resultado retorna null
+		return null;
+	}
+
 }
