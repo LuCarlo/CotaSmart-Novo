@@ -28,26 +28,71 @@
 		src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>
 
-	<form action="alteraFornecedor">
-		<input value="${fornecedor.nome}" />
-	</form>
+	<h5>Alterar Forncedor - ${fornecedores.codFornecedor}</h5>
+	<form  name="form" class="centralizado" action="alteraFornecedor" method="post">
+	
+	<input type="hidden" name="codFornecedor" value="${fornecedores.codFornecedor}" />
+	<h5 class="centralizarTexto">Alterar Fornecedor</h5>
+		<br />
+		<!-- Nome -->
+		<div class="input-field col s12">
+			<input type="text" name="nome" value="${fornecedores.nome}" required="required" class="validate">
+			<label for="nome">Nome da Empresa</label> <br />
+		</div>
+		<!-- Endereço -->
+		<div class="input-field col s12">
+			<input id="endereco" type="text" name="endereco" value="${fornecedores.endereco}"required="required"
+				class="validate"> <label for="nome">Endereço</label> <br />
+		</div>
+
+		<table>
+			<tr>
+				<!-- Telefone 1 -->
+				<td><div class="input-field col s12">
+						<input name="tel1" value="${fornecedores.telefone1}" type="tel" pattern=".{15,}" class="validate"
+							maxlength="15" onKeyPress="MascaraTelefone(form.tel1);">
+						<label for="tel1">Celular</label> <br />
+					</div></td>
+				<!-- Telefone 2 -->
+				<td>
+					<div class="input-field col s12">
+						<input name="tel2" value="${fornecedores.telefone2}"type="tel" pattern=".{15,}" class="validate"
+							maxlength="15" onKeyPress="MascaraTelefone(form.tel2);">
+						<label for="tel2">Telefone</label> <br />
+					</div>
+				</td>
+				<!-- Telefone 3 -->
+				<td>
+					<div class="input-field col s12">
+						<input name="tel3" value="${fornecedores.telefone3}"type="tel" pattern=".{15,}" class="validate"
+							maxlength="15" onKeyPress="MascaraTelefone(form.tel3);">
+						<label for="tel3">Telefone Comercial</label> <br />
+					</div>
+
+				</td>
+			</tr>
+		</table>
+
+		<!-- CNPJ -->
+		<div class="input-field col s12">
+			<input name="cnpj" value="${fornecedores.cnpj}"type="text" pattern=".{15,}" class="validate"
+				maxlength="18" onKeyPress="MascaraCNPJ(form.cnpj);"> <label
+				for="cnpj">CNPJ</label> <br />
+		</div>
+		<!-- Status -->
+		<p>
+			<input type="checkbox" id="status" /> <label for="status">Ativo</label>
+		</p>
+		<p>
+		<div class="centralizarTexto">
+			<input class="waves-effect waves-light btn" type="submit"
+				value="Salvar" />
+		</div>
+	
+		</form>
 	
 	
 	
-	
-	
-<%-- 		<h3>Alterar tarefa - ${fornecedor.codFornecedor}</h3> --%>
-<!-- 	<form action="alterafornecedor" method="post"> -->
-<%-- 		<input type="hidden" name="id" value="${fornecedor.codFornecedor}" /> --%>
-<!-- 		Descrição:<br /> -->
-<%-- 		<textarea name="descricao" cols="100" rows="5">
-<%-- <%-- --%>${fornecedor.nome} --%>
-<%--</textarea> --%> --%>
-<!-- 		<br /> <br /> <input type="submit" value="Alterar" /> -->
-<!-- 		</form> -->
-	
-	
-	
-	
+
 	
 </html>

@@ -20,15 +20,13 @@ public class FornecedorDao {
 			throw new RuntimeException(e);
 		}
 	}
-	
+
 	public void adiciona(Fornecedor fornecedor) {
-		
-		
-		String sql = "INSERT INTO fornecedores ("+
-					"nome, endereco, telefone1, telefone2, telefone3, cnpj) "+
-					"VALUES (?,?,?,?,?,?) ";
+
+		String sql = "INSERT INTO fornecedores (" + "nome, endereco, telefone1, telefone2, telefone3, cnpj) "
+				+ "VALUES (?,?,?,?,?,?) ";
 		try {
-			
+
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setString(1, fornecedor.getNome());
 			stmt.setString(2, fornecedor.getEndereco());
@@ -36,19 +34,19 @@ public class FornecedorDao {
 			stmt.setString(4, fornecedor.getTelefone2());
 			stmt.setString(5, fornecedor.getTelefone3());
 			stmt.setString(6, fornecedor.getCnpj());
-			
+
 			stmt.execute();
-			
+
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
-			
+
 		}
 	}
-	
-	public void altera(Fornecedor fornecedor){
-		String sql = "update fornecedores set nome=?, endereco=?, telefone1=?," +
-						"telefone2=?, telefone3=?, cnpj=? where codFornecedor=?";
-		
+
+	public void altera(Fornecedor fornecedor) {
+		String sql = "update fornecedores set nome=?, endereco=?, telefone1=?,"
+				+ "telefone2=?, telefone3=?, cnpj=? where codFornecedor=?";
+
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setString(1, fornecedor.getNome());
@@ -59,35 +57,37 @@ public class FornecedorDao {
 			stmt.setString(6, fornecedor.getCnpj());
 			stmt.setLong(7, fornecedor.getCodFornecedor());
 			
+			System.out.println(" ID ?? " +fornecedor.getCodFornecedor());
+			System.out.println(" ID ?? " +fornecedor.getNome());
+			
 			stmt.execute();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-			
-					
+
 	}
-	
-	public void remove(Fornecedor fornecedor){
+
+	public void remove(Fornecedor fornecedor) {
 		String sql = "delete from fornecedores where codfornecedor=?";
-		
+
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setLong(1, fornecedor.getCodFornecedor());
-			
+
 			stmt.execute();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-		
+
 	}
-	
-	public List<Fornecedor> getLista(){
-		try{
+
+	public List<Fornecedor> getLista() {
+		try {
 			List<Fornecedor> fornecedores = new ArrayList<Fornecedor>();
 			PreparedStatement stmt = connection.prepareStatement("select * from fornecedores");
 			ResultSet rs = stmt.executeQuery();
-			
-			while(rs.next()){
+
+			while (rs.next()) {
 				Fornecedor fornecedor = new Fornecedor();
 				fornecedor.setCodFornecedor(rs.getInt("codFornecedor"));
 				fornecedor.setNome(rs.getString("nome"));
@@ -96,70 +96,59 @@ public class FornecedorDao {
 				fornecedor.setTelefone1(rs.getString("telefone1"));
 				fornecedor.setTelefone2(rs.getString("telefone2"));
 				fornecedor.setTelefone3(rs.getString("telefone3"));
-				
+
 				fornecedores.add(fornecedor);
 			}
 			rs.close();
 			stmt.close();
 			return fornecedores;
-		}catch(SQLException e){
-			throw new RuntimeException(e);	
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
 		}
 	}
-	
-	public boolean verificaSeExiste(String cnpj){
-		String sql = "Select 1 from fornecedores where cnpj=?"; 
-		
+
+	public boolean verificaSeExiste(String cnpj) {
+		String sql = "Select 1 from fornecedores where cnpj=?";
+
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setString(1, cnpj);
 			ResultSet rs = stmt.executeQuery();
-			
-			if(rs.next()){
-				return true;
-			}
-			
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		
-		}
-		
-		return false;
-	}
-	
-	public Fornecedor buscaPorId(Long codFornecedor) {
-
-		if (codFornecedor == null) {
-			throw new IllegalStateException("Id da tarefa não deve ser nula.");
-		}
-
-		try {
-			PreparedStatement stmt = this.connection
-					.prepareStatement("select * from fornecedores where codfornecedor = ?");
-			stmt.setLong(1, codFornecedor);
-
-			ResultSet rs = stmt.executeQuery();
 
 			if (rs.next()) {
-				
+				return true;
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+
+		}
+
+		return false;
+	}
+
+	public Fornecedor buscaPorId(Long codFornecedor) {
+		try {
+			PreparedStatement stmt = this.connection
+					.prepareStatement("select * from fornecedores where codFornecedor = ?");
+			stmt.setLong(1, codFornecedor);
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
 				Fornecedor fornecedor = new Fornecedor();
 				fornecedor.setCodFornecedor(rs.getInt("codFornecedor"));
-				fornecedor.setNome(rs.getString("nome"));
 				fornecedor.setCnpj(rs.getString("cnpj"));
 				fornecedor.setEndereco(rs.getString("endereco"));
+				fornecedor.setNome(rs.getString("nome"));
 				fornecedor.setTelefone1(rs.getString("telefone1"));
 				fornecedor.setTelefone2(rs.getString("telefone2"));
 				fornecedor.setTelefone3(rs.getString("telefone3"));
-
+				return fornecedor;
 			}
 
-			rs.close();
-			stmt.close();
-
-			return null;
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
+		return null;
 	}
-	
+
 }

@@ -44,12 +44,13 @@ public class UsuarioDao {
 	public void altera(Usuario usuario) {
 		String sql = "UPDATE usuarios SET " +
 					 "nome= ?, " +
-					 "senha = ? "; 
+					 "senha = ? where codUsuario =?"; 
 					 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setString(1, usuario.getNome());
 			stmt.setString(2, usuario.getSenha());
+			stmt.setLong(3, usuario.getCodUsuario());
 //			stmt.setLong(3, usuario.getCodGrupo());
 
 			stmt.execute();

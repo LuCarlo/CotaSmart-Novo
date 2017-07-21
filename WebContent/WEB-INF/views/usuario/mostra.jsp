@@ -11,6 +11,7 @@
 <body>
 	<c:import url="../layout/iniciarBody.jsp" />
 	<form class="centralizado" action="atualizarUsuario">
+		<input type="hidden" name="codUsuario" value="${usuario.codUsuario}" />
 		Usuário:<br /> <input name="nome" type="text" value="${usuario.nome}"><br />
 		<br /> Login:<br /> <input name="login" type="text"
 			value="${usuario.login}" disabled="disabled"><br /> <br />

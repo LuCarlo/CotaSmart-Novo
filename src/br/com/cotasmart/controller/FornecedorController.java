@@ -34,13 +34,13 @@ public class FornecedorController {
 	public String remove(Fornecedor fornecedor){
 		FornecedorDao dao = new FornecedorDao();
 		dao.remove(fornecedor);
-		System.out.println("TESTE id=" +fornecedor.getCodFornecedor());
 		return "redirect:listaFornecedor";
 	}
 		
 	@RequestMapping("alteraFornecedor")
 	public String altera(Fornecedor fornecedor){
 		FornecedorDao dao = new FornecedorDao();
+		System.out.println("ID CHEGOU VAZIO NO CONTROLLER =" + fornecedor.getCodFornecedor());
 		dao.altera(fornecedor);
 		return "redirect:listaFornecedor";
 	}
@@ -49,6 +49,6 @@ public class FornecedorController {
 	public String mostra(Long codFornecedor, Model model){
 		FornecedorDao dao = new FornecedorDao();
 		model.addAttribute("fornecedores", dao.buscaPorId(codFornecedor));
-		return "tarefa/mostra";
+		return "fornecedor/mostra";
 	}
 }
