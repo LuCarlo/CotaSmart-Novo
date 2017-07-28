@@ -57,9 +57,6 @@ public class FornecedorDao {
 			stmt.setString(6, fornecedor.getCnpj());
 			stmt.setLong(7, fornecedor.getCodFornecedor());
 			
-			System.out.println(" ID ?? " +fornecedor.getCodFornecedor());
-			System.out.println(" ID ?? " +fornecedor.getNome());
-			
 			stmt.execute();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

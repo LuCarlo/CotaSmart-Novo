@@ -69,6 +69,7 @@ public class CreationFactory {
 					"CREATE TABLE IF NOT EXISTS produtos ( "+
 					"codProduto SERIAL, "+
 					"nome CHARACTER VARYING (50), "+
+					"codBarras CHARACTER VARYING (50)," +
 					"codStatus INTEGER REFERENCES status ON DELETE CASCADE, "+
 					"codGrupoProdutos INTEGER REFERENCES grupoProdutos ON DELETE CASCADE, "+
 					"CONSTRAINT pk_produtos PRIMARY KEY (codProduto));"+

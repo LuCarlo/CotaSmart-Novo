@@ -1,8 +1,17 @@
 package br.com.cotasmart.modelo;
 
 public class Produto {
-	Long codProduto;
+	int codProduto;
 	String nome;
+	String codBarras;
+	public String getCodBarras() {
+		return codBarras;
+	}
+
+	public void setCodBarras(String codBarras) {
+		this.codBarras = codBarras;
+	}
+
 	Long codStatus;
 	Long codGrupoProdutos;
 
@@ -12,8 +21,12 @@ public class Produto {
 		this.codGrupoProdutos = codGrupoProdutos;
 	}
 
-	public Long getCodProduto() {
+	public int getCodProduto() {
 		return codProduto;
+	}
+
+	public void setCodProduto(int codProduto) {
+		this.codProduto = codProduto;
 	}
 
 	public String getNome() {
