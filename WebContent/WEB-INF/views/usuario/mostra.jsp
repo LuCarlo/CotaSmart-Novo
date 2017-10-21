@@ -39,8 +39,13 @@
 
 		<div style="text-align: center">
 			<button class="waves-effect waves-light btn" type="submit">Salvar</button>
-		</div>
 
+		</div>
+	</form>
+	<form action="listaUsuario">
+		<div style="text-align: center">
+			<button onClick="voltar();">Cancelar</button>
+		</div>
 	</form>
 </body>
 </html>

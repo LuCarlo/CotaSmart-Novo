@@ -33,7 +33,7 @@ public class CreationFactory {
 					"nome CHARACTER VARYING(50), "+
 					"login CHARACTER VARYING (20), "+
 					"senha CHARACTER VARYING (10), "+
-					"codStatus INTEGER REFERENCES status ON DELETE CASCADE, "+
+					"ativo BOOLEAN, "+
 					"codGrupo INTEGER REFERENCES gruposUsuario ON DELETE CASCADE, "+
 					"CONSTRAINT pk_usuario PRIMARY KEY (codUsuario));" +
 					" "+

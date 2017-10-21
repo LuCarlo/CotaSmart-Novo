@@ -145,3 +145,7 @@ function formataCampo(campo, Mascara, evento) {
                 return true; 
         }
 }
+// Código para voltar página
+function voltar() {
+	window.setTimeout(function(){history.go(-1)},1000);
+}

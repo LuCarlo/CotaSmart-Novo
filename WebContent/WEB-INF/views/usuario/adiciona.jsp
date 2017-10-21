@@ -1,61 +1,54 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Adicionar Usuário</title>
-	<c:import url="../layout/iniciarHead.jsp" />
+<c:import url="../layout/iniciarHead.jsp" />
 </head>
 <body>
 	<c:import url="../layout/iniciarBody.jsp" />
-	
+
 	<!-- Inicio do formulário -->
 	<form class="centralizado" action="adicionaUsuario">
-		<h5>Adicionar Usuário</h5>
+		<h5 class="centralizado">Adicionar Usuário</h5>
 		<!-- Nome -->
-		<div class="input-field col s12">
-			<input id="nome" type="text" name="nome" class="validate"> <label
-				for="nome">Nome</label> <br />
+		<div class="form-group">
+			<label class="col-form-label" for="nome">Nome</label>
+			<input type="text" class="form-control" name="nome" required="required"
+				placeholder="Ex: José da Silva">
 		</div>
 		<!-- Login -->
-		<div class="input-field col s12">
-			<input id="login" type="text" name="login" class="validate">
-			<label for="login">Login</label>
+		<div class="form-group">
+			<label class="col-form-label" for="login">Usuário</label>
+			<input type="text" class="form-control" name="login" required="required"
+				placeholder="Ex: zezinho">
 		</div>
 		<!-- Senha -->
-		<div class="input-field col s12">
-			<input id="senha" type="password" name="senha" class="validate">
-			<label for="senha">Senha</label> <br />
+
+		<div class="form-group">
+			<label class="col-form-label" for="senha">Senha</label>
+			<input type="password" class="form-control" name="senha" required="required"
+				placeholder="Ex: 123456">
 		</div>
-		<!-- Confirmar Senha -->
-		<div class="input-field col s12">
-			<input id="senha" type="password" name="senha" class="validate">
-			<label for="senha">Confirmar Senha</label> <br />
-		</div>
-		<!-- Status -->
-		<p>
-			<input type="checkbox" name="status" /> <label for="status">Ativo</label>
-		</p>
-		<p>
-			<!-- Grupo de usuário -->
-			<script type="text/javascript">
-				$(document).ready(function() {
-					$('select').material_select();
-				});
-			</script>
-		<div class="input-field col s12">
-			<select>
-				<option value="" disabled selected>Grupo do Usuário</option>
-				<option value="1">Administrador</option>
-				<option value="2">Fornecedor</option>
-				<option value="3">Funcionário</option>
-			</select>
-		</div>
-		<div class="centralizarTexto">
-			<input class="waves-effect waves-light btn" type="submit"
-				value="Salvar" />
+		
+		Grupo do Usuário 
+		<br>
+		<div class="form-group">
+		<select id="inputState" class="form-control" required="required">
+			<option >Administrador</option>
+			<option>Fornecedor</option>
+		</select>
 		</div>
 
+
+
+		<div class="centralizarTexto">
+			<input class="btn btn-success" type="submit" value="Salvar" /> <input
+				class="btn btn-danger" type="button" onClick="voltar();"
+				value="Cancelar" />
+		</div>
 
 	</form>
+
 </body>
 </html>

@@ -6,28 +6,51 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Usuários Cadastrados</title>
 <c:import url="../layout/iniciarHead.jsp" />
 </head>
 <body>
 	<c:import url="../layout/iniciarBody.jsp" />
-	<h3>Usuários Cadastrados</h3>
-	<table class="striped">
-		<tr>
-			<th></th>
-			<th>Login</th>
-			<th>Nome</th>
-			<th>Ação</th>
-		</tr>
-		<c:forEach items="${usuarios}" var="usuario">
-			<tr>
-				<td><input type="checkbox"></td>
-				<td>${usuario.login}</td>
-				<td><a href="mostraUsuario?codUsuario=${usuario.codUsuario}">${usuario.nome}</a></td>
-				<td><a href="removeUsuario?codUsuario=${usuario.codUsuario}">Remover</a></td>
-			</tr>
-		</c:forEach>
+	<h4 class="centralizado" style="text-align: center">Usuários
+		Cadastrados</h4>
 
-	</table>
+	<form class="alinhadoDireita" action="novoUsuario">
+		<button type="submit" class="btn btn-primary btn-sm">Novo
+			Usuário</button>
+	</form>
+	<div class="centralizado">
+		<table class="table table-striped">
+			<tr>
+				<th scope="col">Usuário</th>
+				<th scope="col">Nome</th>
+				<th scope="col">Status</th>
+				<th scope="col">Ação</th>
+			</tr>
+			<c:forEach items="${usuarios}" var="usuario">
+				<tr>
+					<td>${usuario.login}</td>
+					<td>${usuario.nome}</td>
+					<c:if test="${usuario.ativo eq true}">
+						<td style="color: blue">Ativo</td>
+
+					</c:if>
+					<c:if test="${usuario.ativo eq false}">
+						<td style="color: red">Inativo</td>
+
+					</c:if>
+					<td><a href="mostraUsuario?codUsuario=${usuario.codUsuario}"><button
+								class="btn btn-primary">Alterar</button></a> <c:if
+							test="${usuario.ativo eq true}">
+							<a href="desativarUsuario?codUsuario=${usuario.codUsuario}"><button
+									class="btn btn-danger">Desativar</button></a>
+						</c:if> <c:if test="${usuario.ativo eq false}">
+							<a href="ativarUsuario?codUsuario=${usuario.codUsuario}"><button
+									class="btn btn-success">Ativar</button></a>
+
+						</c:if></td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
 </body>
 </html>

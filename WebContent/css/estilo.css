@@ -10,7 +10,7 @@ body {
 
 .centralizado {
 	margin: 0 auto;
-	width: 600px;
+	width: 700px;
 	/*   background: #48304D; */
 	padding: 20px;
 	color: black;
@@ -21,5 +21,14 @@ body {
 	width: 600px;
 	padding: 20px;
 	
+}
+.alinhadoEsquerda{
+	align: left;
+}
+
+.alinhadoDireita{
+	text-align: right;
+	padding-right: 10px;
+	padding-bottom: 10px;
 }
 }

@@ -9,7 +9,7 @@ public class Usuario {
 	private String nome;
 	private String login;
 	private String senha;
-	private Integer codStatus;
+	private boolean ativo;
 	private Integer codGrupo;
 	
 //	public Usuario(String nome, String login, String senha, Integer codStatus, Integer codGrupo) {
@@ -49,12 +49,13 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public Integer getCodStatus() {
-		return codStatus;
+
+	public boolean isAtivo() {
+		return ativo;
 	}
 
-	public void setCodStatus(Integer codStatus) {
-		this.codStatus = codStatus;
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
 	}
 
 	public Integer getCodGrupo() {

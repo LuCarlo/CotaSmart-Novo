@@ -19,12 +19,14 @@ public class UsuarioController {
 	public String adiciona(Usuario usuario) {
 		if (usuario != null) {
 			UsuarioDao dao = new UsuarioDao();
-			dao.adiciona(usuario);
-			return "redirect:listaUsuario";
+			if(dao.adiciona(usuario)){
+				return "listaUsuario";	
+			}else{
+				return "RESOLVER FUTURAMENTE";
+			}
 		}
 		System.out.println("deu ruim");
 		return "www.google.com.br";
-
 	}
 
 	@RequestMapping("listaUsuario")
@@ -33,13 +35,6 @@ public class UsuarioController {
 		model.addAttribute("usuarios", dao.getLista());
 		return "usuario/lista";
 
-	}
-
-	@RequestMapping("removeUsuario")
-	public String remove(Usuario usuario) {
-		UsuarioDao dao = new UsuarioDao();
-		dao.exclui(usuario);
-		return "redirect:listaUsuario";
 	}
 
 	@RequestMapping("mostraUsuario")
@@ -55,6 +50,20 @@ public class UsuarioController {
 		dao.altera(usuario);
 		return "redirect:listaUsuario";
 
+	}
+
+	@RequestMapping("desativarUsuario")
+	public String desativaUsuario(Usuario usuario) {
+		UsuarioDao dao = new UsuarioDao();
+		dao.desativarUsuario(usuario.getCodUsuario());
+		return "redirect:listaUsuario";
+	}
+
+	@RequestMapping("ativarUsuario")
+	public String ativaUsuario(Usuario usuario) {
+		UsuarioDao dao = new UsuarioDao();
+		dao.ativarUsuario(usuario.getCodUsuario());
+		return "redirect:listaUsuario";
 	}
 
 }
