@@ -70,7 +70,7 @@ public class CreationFactory {
 					"codProduto SERIAL, "+
 					"nome CHARACTER VARYING (50), "+
 					"codBarras CHARACTER VARYING (50)," +
-					"codStatus INTEGER REFERENCES status ON DELETE CASCADE, "+
+					"ativo boolean, "+
 					"codGrupoProdutos INTEGER REFERENCES grupoProdutos ON DELETE CASCADE, "+
 					"CONSTRAINT pk_produtos PRIMARY KEY (codProduto));"+
 					" "+

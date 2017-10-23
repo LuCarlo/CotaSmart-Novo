@@ -37,6 +37,7 @@ public class FornecedorDao {
 			stmt.setBoolean(7, true);
 
 			stmt.execute();
+			stmt.close();
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -59,6 +60,7 @@ public class FornecedorDao {
 			stmt.setLong(7, fornecedor.getCodFornecedor());
 
 			stmt.execute();
+			stmt.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -73,6 +75,7 @@ public class FornecedorDao {
 			stmt.setLong(1, fornecedor.getCodFornecedor());
 
 			stmt.execute();
+			stmt.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -141,6 +144,8 @@ public class FornecedorDao {
 				fornecedor.setTelefone1(rs.getString("telefone1"));
 				fornecedor.setTelefone2(rs.getString("telefone2"));
 				fornecedor.setTelefone3(rs.getString("telefone3"));
+				stmt.close();
+				rs.close();
 				return fornecedor;
 			}
 
@@ -162,7 +167,7 @@ public class FornecedorDao {
 			throw new RuntimeException(e);
 		}
 	}
-	
+
 	public void desativaFornecedor(Long codFornecedor) {
 		try {
 			PreparedStatement stmt = this.connection

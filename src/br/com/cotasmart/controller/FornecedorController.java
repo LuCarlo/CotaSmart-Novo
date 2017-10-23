@@ -30,12 +30,12 @@ public class FornecedorController {
 
 	}
 
-	@RequestMapping("removeFornecedor")
-	public String remove(Fornecedor fornecedor) {
-		FornecedorDao dao = new FornecedorDao();
-		dao.remove(fornecedor);
-		return "redirect:listaFornecedor";
-	}
+//	@RequestMapping("removeFornecedor")
+//	public String remove(Fornecedor fornecedor) {
+//		FornecedorDao dao = new FornecedorDao();
+//		dao.remove(fornecedor);
+//		return "redirect:listaFornecedor";
+//	}
 
 	@RequestMapping("alteraFornecedor")
 	public String altera(Fornecedor fornecedor) {
