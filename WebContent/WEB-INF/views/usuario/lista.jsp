@@ -14,12 +14,14 @@
 	<h4 class="centralizado" style="text-align: center">Usuários
 		Cadastrados</h4>
 
-	<form class="alinhadoDireita" action="novoUsuario">
-		<button type="submit" class="btn btn-primary btn-sm">Novo
-			Usuário</button>
-	</form>
+
 	<div class="centralizado">
+		<form class="alinhadoDireita" action="novoUsuario">
+			<button type="submit" class="btn btn-info">Novo
+				Usuário</button>
+		</form>
 		<table class="table table-striped">
+
 			<tr>
 				<th scope="col">Usuário</th>
 				<th scope="col">Nome</th>
@@ -46,7 +48,6 @@
 						</c:if> <c:if test="${usuario.ativo eq false}">
 							<a href="ativarUsuario?codUsuario=${usuario.codUsuario}"><button
 									class="btn btn-success">Ativar</button></a>
-
 						</c:if></td>
 				</tr>
 			</c:forEach>

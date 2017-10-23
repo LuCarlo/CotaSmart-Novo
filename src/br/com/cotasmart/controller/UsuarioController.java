@@ -20,7 +20,7 @@ public class UsuarioController {
 		if (usuario != null) {
 			UsuarioDao dao = new UsuarioDao();
 			if(dao.adiciona(usuario)){
-				return "listaUsuario";	
+				return "redirect:listaUsuario";	
 			}else{
 				return "RESOLVER FUTURAMENTE";
 			}

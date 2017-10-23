@@ -13,6 +13,6 @@
 <link rel="stylesheet" type="text/css" href="css/estilo.css">
 <script type="text/javascript" src="js/funcao.js"></script>
 <%-- <c:import url="../layout/menu.jsp" /> --%>
-<h3>Cabeçalho</h3>
+<h3></h3>
 <br />
 <hr />
