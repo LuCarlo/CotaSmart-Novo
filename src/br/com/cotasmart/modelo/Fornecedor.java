@@ -2,13 +2,22 @@ package br.com.cotasmart.modelo;
 
 public class Fornecedor {
 
-	private int codFornecedor;
+	private Long codFornecedor;
 	private String nome;
 	private String endereco;
 	private String telefone1;
 	private String telefone2;
 	private String telefone3;
 	private String cnpj;
+	private boolean ativo;
+
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
 
 	@Override
 	public boolean equals(Object obj) {
@@ -25,7 +34,6 @@ public class Fornecedor {
 		// TODO Auto-generated method stub
 		return super.toString();
 	}
-
 
 	public String getNome() {
 		return nome;
@@ -75,11 +83,13 @@ public class Fornecedor {
 		this.cnpj = cnpj;
 	}
 
-	public int getCodFornecedor() {
+	public Long getCodFornecedor() {
 		return codFornecedor;
 	}
 
-	public void setCodFornecedor(Integer codFornecedor){
+	public void setCodFornecedor(Long codFornecedor) {
 		this.codFornecedor = codFornecedor;
-		}
+	}
+
+
 }

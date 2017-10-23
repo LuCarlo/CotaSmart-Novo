@@ -58,7 +58,7 @@ public class CreationFactory {
 					"telefone2 CHARACTER VARYING(20), "+
 					"telefone3 CHARACTER VARYING(20), "+
 					"codUsuario INTEGER REFERENCES gruposUsuario ON DELETE CASCADE, "+
-					"codStatus INTEGER REFERENCES status ON DELETE CASCADE, "+
+					"ativo boolean, "+
 					"CONSTRAINT pk_fornecedores PRIMARY KEY (codFornecedor));"+
 					" "+
 					"CREATE TABLE IF NOT EXISTS grupoProdutos ( "+

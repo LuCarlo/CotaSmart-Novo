@@ -9,7 +9,7 @@
 	<c:import url="../layout/iniciarBody.jsp" />
 
 	<!-- Inicio do formulário -->
-	<form class="centralizado" action="adicionaUsuario">
+	<form class="centralizadoFormulario" action="adicionaUsuario">
 		<h5 class="centralizado">Adicionar Usuário</h5>
 		<!-- Nome -->
 		<div class="form-group">

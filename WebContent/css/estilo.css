@@ -10,11 +10,32 @@ body {
 
 .centralizado {
 	margin: 0 auto;
-	width: 700px;
-	/*   background: #48304D; */
-	padding: 20px;
-	color: black;
+	width: 1000px;
+	align: center;
+	padding-left: 100px;
+	padding-right: 100px;
 }
+
+.centralizadoFornecedor {
+	margin: 0 auto;
+	width: 1500px;
+	align: center;
+	padding-left: 100px;
+	padding-right: 100px;
+}
+
+.centralizadoFormulario {
+	margin: 0 auto;
+	width: 700px;
+/* 	padding: 20px; */
+/* 	color: black; */
+	align: center;
+/* 	padding-bottom: 10px; */
+/* 	padding-top : 10px; */
+	padding-left: 100px;
+	padding-right: 100px;
+}
+
 
 .divLista {
 	margin-top: 60px;

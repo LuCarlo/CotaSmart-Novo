@@ -20,8 +20,9 @@ public class ConnectionFactory {
 			System.out.println("Erro de conexão(VERIFICAR PORTA): " + e.getMessage());
 			throw new SQLException(e);
 		}
-
+		System.out.println("Sucesso.");
 		return DriverManager.getConnection(url, usuario, senha);
+		
 	}
 
 }

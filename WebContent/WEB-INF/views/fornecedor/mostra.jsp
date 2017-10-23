@@ -1,72 +1,64 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<%@	taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!--Import Google Icon Font-->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-<!--Import materialize.css-->
-<link type="text/css" rel="stylesheet" href="css/materialize.min.css"
-	media="screen,projection" />
-
-<!--Let browser know website is optimized for mobile-->
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<link rel="stylesheet" type="text/css" href="css/estilo.css">
+<meta charset="ISO-8859-1">
 <c:import url="../layout/iniciarHead.jsp" />
-<title>Alterar Fornecedor</title>
+<title>Adicionar Fornecedor</title>
 </head>
 <body>
-
 	<c:import url="../layout/iniciarBody.jsp" />
-	<!--Import jQuery before materialize.js-->
-	<script type="text/javascript"
-		src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script type="text/javascript" src="js/materialize.min.js"></script>
 
-	<h5>Alterar Forncedor - ${fornecedores.codFornecedor}</h5>
-	<form  name="form" class="centralizado" action="alteraFornecedor" method="post">
-	
-	<input type="hidden" name="codFornecedor" value="${fornecedores.codFornecedor}" />
-	<h5 class="centralizarTexto">Alterar Fornecedor</h5>
-		<br />
+	<!-- Inicio do formulário -->
+	<form name="form" class="centralizadoFormulario"
+		action="alteraFornecedor" method="post">
+		<h5 class="centralizarTexto">Alterar Fornecedor</h5>
+		<br /> <input type="hidden" value="${fornecedores.codFornecedor}"
+			name="codFornecedor" />
 		<!-- Nome -->
-		<div class="input-field col s12">
-			<input type="text" name="nome" value="${fornecedores.nome}" required="required" class="validate">
-			<label for="nome">Nome da Empresa</label> <br />
+		<div class="form-group">
+			<label class="col-form-label" for="nome">Nome</label> <input
+				type="text" class="form-control" name="nome" required="required"
+				value="${fornecedores.nome}">
 		</div>
 		<!-- Endereço -->
-		<div class="input-field col s12">
-			<input id="endereco" type="text" name="endereco" value="${fornecedores.endereco}"required="required"
-				class="validate"> <label for="nome">Endereço</label> <br />
+		<div class="form-group">
+			<label class="col-form-label" for="endereco">Endereço</label> <input
+				type="text" class="form-control" name="endereco" required="required"
+				value="${fornecedores.endereco}">
 		</div>
 
 		<table>
 			<tr>
 				<!-- Telefone 1 -->
-				<td><div class="input-field col s12">
-						<input name="tel1" value="${fornecedores.telefone1}" type="tel" pattern=".{15,}" class="validate"
-							maxlength="15" onKeyPress="MascaraTelefone(form.tel1);">
-						<label for="tel1">Celular</label> <br />
-					</div></td>
+				<td>
+					<div class="form-group">
+						<label class="col-form-label" for="telefone1">Celular</label> <input
+							type="text" class="form-control" name="telefone1"
+							onKeyPress="MascaraCelular(form.telefone1);" required="required"
+							pattern=".{16,}" class="validate" maxlength="16"
+							value="${fornecedores.telefone1}">
+					</div>
+				</td>
 				<!-- Telefone 2 -->
 				<td>
-					<div class="input-field col s12">
-						<input name="tel2" value="${fornecedores.telefone2}"type="tel" pattern=".{15,}" class="validate"
-							maxlength="15" onKeyPress="MascaraTelefone(form.tel2);">
-						<label for="tel2">Telefone</label> <br />
+					<div class="form-group">
+						<label class="col-form-label" for="telefone2">Telefone</label> <input
+							type="text" class="form-control" name="telefone2"
+							onKeyPress="MascaraTelefone(form.telefone2);" required="required"
+							pattern=".{14,}" class="validate" maxlength="14"
+							value="${fornecedores.telefone2}">
 					</div>
 				</td>
 				<!-- Telefone 3 -->
 				<td>
-					<div class="input-field col s12">
-						<input name="tel3" value="${fornecedores.telefone3}"type="tel" pattern=".{15,}" class="validate"
-							maxlength="15" onKeyPress="MascaraTelefone(form.tel3);">
-						<label for="tel3">Telefone Comercial</label> <br />
+					<div class="form-group">
+						<label class="col-form-label" for="telefone3">Telefone
+							Comercial</label> <input type="text" class="form-control"
+							name="telefone3" onKeyPress="MascaraTelefone(form.telefone3);"
+							pattern=".{14,}" class="validate" maxlength="1"
+							required="required" value="${fornecedores.telefone3}">
 					</div>
 
 				</td>
@@ -74,25 +66,18 @@
 		</table>
 
 		<!-- CNPJ -->
-		<div class="input-field col s12">
-			<input name="cnpj" value="${fornecedores.cnpj}"type="text" pattern=".{15,}" class="validate"
-				maxlength="18" onKeyPress="MascaraCNPJ(form.cnpj);"> <label
-				for="cnpj">CNPJ</label> <br />
+		<div class="form-group">
+			<label class="col-form-label" for="cnpj">CNPJ</label> <input
+				type="text" class="form-control" name="cnpj" required="required"
+				pattern=".{15,}" class="validate" maxlength="18"
+				onKeyPress="MascaraCNPJ(form.cnpj);" value="${fornecedores.cnpj}">
 		</div>
-		<!-- Status -->
-		<p>
-			<input type="checkbox" id="status" /> <label for="status">Ativo</label>
-		</p>
-		<p>
 		<div class="centralizarTexto">
-			<input class="waves-effect waves-light btn" type="submit"
-				value="Salvar" />
+			<input class="btn btn-success" type="submit" value="Salvar" /> <a
+				href="listaFornecedor"><button type="button"
+					class="btn btn-danger">Cancelar</button></a>
 		</div>
-	
-		</form>
-	
-	
-	
+	</form>
 
-	
+</body>
 </html>

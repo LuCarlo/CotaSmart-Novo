@@ -23,8 +23,8 @@ public class FornecedorDao {
 
 	public void adiciona(Fornecedor fornecedor) {
 
-		String sql = "INSERT INTO fornecedores (" + "nome, endereco, telefone1, telefone2, telefone3, cnpj) "
-				+ "VALUES (?,?,?,?,?,?) ";
+		String sql = "INSERT INTO fornecedores (" + "nome, endereco, telefone1, telefone2, telefone3, cnpj, ativo) "
+				+ "VALUES (?,?,?,?,?,?,?) ";
 		try {
 
 			PreparedStatement stmt = connection.prepareStatement(sql);
@@ -34,6 +34,7 @@ public class FornecedorDao {
 			stmt.setString(4, fornecedor.getTelefone2());
 			stmt.setString(5, fornecedor.getTelefone3());
 			stmt.setString(6, fornecedor.getCnpj());
+			stmt.setBoolean(7, true);
 
 			stmt.execute();
 
@@ -56,7 +57,7 @@ public class FornecedorDao {
 			stmt.setString(5, fornecedor.getTelefone3());
 			stmt.setString(6, fornecedor.getCnpj());
 			stmt.setLong(7, fornecedor.getCodFornecedor());
-			
+
 			stmt.execute();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -81,18 +82,19 @@ public class FornecedorDao {
 	public List<Fornecedor> getLista() {
 		try {
 			List<Fornecedor> fornecedores = new ArrayList<Fornecedor>();
-			PreparedStatement stmt = connection.prepareStatement("select * from fornecedores");
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM fornecedores ORDER BY nome");
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
 				Fornecedor fornecedor = new Fornecedor();
-				fornecedor.setCodFornecedor(rs.getInt("codFornecedor"));
+				fornecedor.setCodFornecedor(rs.getLong("codFornecedor"));
 				fornecedor.setNome(rs.getString("nome"));
 				fornecedor.setCnpj(rs.getString("cnpj"));
 				fornecedor.setEndereco(rs.getString("endereco"));
 				fornecedor.setTelefone1(rs.getString("telefone1"));
 				fornecedor.setTelefone2(rs.getString("telefone2"));
 				fornecedor.setTelefone3(rs.getString("telefone3"));
+				fornecedor.setAtivo(rs.getBoolean("ativo"));
 
 				fornecedores.add(fornecedor);
 			}
@@ -132,7 +134,7 @@ public class FornecedorDao {
 			ResultSet rs = stmt.executeQuery();
 			if (rs.next()) {
 				Fornecedor fornecedor = new Fornecedor();
-				fornecedor.setCodFornecedor(rs.getInt("codFornecedor"));
+				fornecedor.setCodFornecedor(rs.getLong("codFornecedor"));
 				fornecedor.setCnpj(rs.getString("cnpj"));
 				fornecedor.setEndereco(rs.getString("endereco"));
 				fornecedor.setNome(rs.getString("nome"));
@@ -146,6 +148,32 @@ public class FornecedorDao {
 			throw new RuntimeException(e);
 		}
 		return null;
+	}
+
+	public void ativaFornecedor(Long codFornecedor) {
+		try {
+			PreparedStatement stmt = this.connection
+					.prepareStatement("UPDATE fornecedores SET ativo = ? WHERE codFornecedor = ?");
+			stmt.setBoolean(1, true);
+			stmt.setLong(2, codFornecedor);
+			stmt.execute();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public void desativaFornecedor(Long codFornecedor) {
+		try {
+			PreparedStatement stmt = this.connection
+					.prepareStatement("UPDATE fornecedores SET ativo = ? WHERE codFornecedor = ?");
+			stmt.setBoolean(1, false);
+			stmt.setLong(2, codFornecedor);
+			stmt.execute();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 }

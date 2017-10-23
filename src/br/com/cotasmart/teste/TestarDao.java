@@ -8,7 +8,7 @@ public class TestarDao {
 	public static void main(String[] args) {
 		
 		Fornecedor f = new Fornecedor();
-		f.setCodFornecedor(9);
+		f.setCodFornecedor((long) 9);
 		f.setNome("TESTE 04");
 		f.setTelefone1("3388-1515");
 		f.setTelefone2("3388-1515");

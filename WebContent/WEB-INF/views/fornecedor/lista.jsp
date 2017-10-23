@@ -6,46 +6,83 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<!--Import materialize.css-->
-<link type="text/css" rel="stylesheet" href="css/materialize.min.css"
-	media="screen,projection" />
-	<script type="text/javascript" src="js/materialize.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/estilo.css">
-	<c:import url="../layout/iniciarHead.jsp" />
+
+<c:import url="../layout/iniciarHead.jsp" />
 <title>Empresas cadastradas</title>
 </head>
 <body>
 	<c:import url="../layout/iniciarBody.jsp" />
-	
-	<div style="width: 1300px; height: 86px; margin-top: 35px; margin-left: 45px; ">
-	<a href="novoFornecedor">Cadastrar Fornecedor</a>
-	<table class="striped" >
-		<tr>
-			<th></th>
-			<th>ID</th>
-			<th>FORNECEDOR</th>
-			<th>CNPJ</th>
-			<th>ENDEREÇO</th>
-			<th>CELULAR</th>
-			<th>TELEFONE</th>
-			<th>TELEFONE COMERCIAL</th>
-			<th>EXCLUIR</th>
-		</tr>
-		<c:forEach items="${fornecedores}" var="fornecedor">
-		<tr>
-			<td><input type="checkbox"></td>
-			<td>${fornecedor.codFornecedor}</td>
-			<td><a href="mostraFornecedor?codFornecedor=${fornecedor.codFornecedor}">${fornecedor.nome}</a></td>
-			<td>${fornecedor.cnpj}</td>
-			<td>${fonecedor.endereco}</td>
-			<td>${fornecedor.telefone1}</td>
-			<td>${fornecedor.telefone2}</td>
-			<td>${fornecedor.telefone3}</td>
-			<td><a href="removeFornecedor?codFornecedor=${fornecedor.codFornecedor}">Remover</a>
-				</td>
-		</tr>
-		</c:forEach>
-	</table></div>
+
+	<div class="centralizadoFornecedor">
+		<form class="alinhadoDireita" action="novoFornecedor">
+			<button type="submit" class="btn btn-info">Novo Fornecedor</button>
+		</form>
+		<table class="table table-striped">
+			<tr>
+				<th>Fornecedor</th>
+				<th>CNPJ</th>
+				<th>Endereço</th>
+				<th>Celular</th>
+				<th>Telefone</th>
+				<th>Telefone Comercial</th>
+				<th>Status</th>
+				<th>Ação</th>
+			</tr>
+			<c:forEach items="${fornecedores}" var="fornecedor">
+				<tr>
+					<td style="width: 250px">${fornecedor.nome}</td>
+					<td>${fornecedor.cnpj}</td>
+					<td><button type="button" class="btn btn-info"
+							data-toggle="modal" data-target="#${fornecedor.codFornecedor}">Detalhes</button></td>
+					<td>${fornecedor.telefone1}</td>
+					<td>${fornecedor.telefone2}</td>
+					<td>${fornecedor.telefone3}</td>
+					<c:if test="${fornecedor.ativo eq true}">
+						<td style="color: blue">Ativo</td>
+
+					</c:if>
+					<c:if test="${fornecedor.ativo eq false}">
+						<td style="color: red">Inativo</td>
+
+					</c:if>
+					<td><a
+						href="mostraFornecedor?codFornecedor=${fornecedor.codFornecedor}"><button
+								class="btn btn-primary">Alterar</button></a> <c:if
+							test="${fornecedor.ativo eq true}">
+							<a href="desativaFornecedor?codFornecedor=${fornecedor.codFornecedor}"><button
+									class="btn btn-danger">Desativar</button></a>
+						</c:if> <c:if test="${fornecedor.ativo eq false}">
+							<a href="ativaFornecedor?codFornecedor=${fornecedor.codFornecedor}"><button
+									class="btn btn-success">Ativar</button></a>
+						</c:if></td>
+					<!-- Modal -->
+					<div class="modal fade" id="${fornecedor.codFornecedor}"
+						tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+						aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">Endereço:
+										${fornecedor.nome}</h5>
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">${fornecedor.endereco}</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary"
+										data-dismiss="modal">Fechar</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
+
+
 
 </body>
 </html>
