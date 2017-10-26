@@ -78,7 +78,7 @@ public class CreationFactory {
 					"codCotacao SERIAL, "+
 					"data DATE, "+
 					"codUsuario INTEGER REFERENCES usuarios ON DELETE CASCADE, "+
-					"codStatus INTEGER REFERENCES status ON DELETE CASCADE,"+
+					"ativo boolean,"+
 					"CONSTRAINT pk_cotacao PRIMARY KEY (codCotacao) );"+
 					" "+
 					"CREATE TABLE IF NOT EXISTS cotacaoProdutos ( "+
