@@ -22,16 +22,19 @@ public class ProdutoDao {
 	}
 
 	public void adiciona(Produto produto) {
-		String sql = "INSERT INTO produtos (" + "nome, ativo, codGrupoProdutos, codBarras) " + "VALUES (?,?,?,?)";
+		String sql = "INSERT INTO produtos (" + "nome, ativo, codBarras) " + "VALUES (?,?,?)";
 		try {
-			PreparedStatement stmt = connection.prepareStatement(sql);
+			if (produto != null) {
+				PreparedStatement stmt = connection.prepareStatement(sql);
 
-			stmt.setString(1, produto.getNome());
-			stmt.setBoolean(2, true);
-			stmt.setLong(3, produto.getCodGrupoProdutos());
-			stmt.setString(4, produto.getCodBarras());
+				stmt.setString(1, produto.getNome());
+				stmt.setBoolean(2, true);
+				stmt.setString(3, produto.getCodBarras());
 
-			stmt.execute();
+				stmt.execute();
+			} else {
+				System.out.println("Produto = null");
+			}
 
 		} catch (SQLException e) {
 			System.out.println("Falha ao inserir produto: " + e.getMessage());
@@ -40,34 +43,18 @@ public class ProdutoDao {
 	}
 
 	public void altera(Produto produto) {
-		String sql = "update produtos set nome=?, codGrupoProdutos, codBarras" + " where codProduto=?";
+		String sql = "UPDATE produtos SET nome=?, codBarras = ? WHERE codProduto=?";
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setString(1, produto.getNome());
-			stmt.setLong(2, produto.getCodGrupoProdutos());
-			stmt.setString(3, produto.getCodBarras());
-
+			stmt.setString(2, produto.getCodBarras());
+			stmt.setInt(3, produto.getCodProduto());
 			stmt.execute();
 			stmt.close();
 
 		} catch (SQLException e) {
 			System.out.println("Não foi possivel alterar produto: " + e);
-			throw new RuntimeException(e);
-		}
-	}
-
-	public void remove(Produto produto) {
-		String sql = "delete from produtos where codProduto=?";
-
-		try {
-			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setLong(1, produto.getCodProduto());
-
-			stmt.execute();
-
-		} catch (SQLException e) {
-			System.out.println("Não foi possivel excluir produto" + e);
 			throw new RuntimeException(e);
 		}
 	}
@@ -80,8 +67,9 @@ public class ProdutoDao {
 
 			while (rs.next()) {
 				Produto produto = new Produto();
+				produto.setNome(rs.getString("nome"));
 				produto.setCodProduto(rs.getInt("codProduto"));
-				produto.setCodBarras(("codBarras"));
+				produto.setCodBarras(rs.getString("codBarras"));
 				produto.setAtivo(rs.getBoolean("ativo"));
 				produtos.add(produto);
 			}
@@ -93,29 +81,32 @@ public class ProdutoDao {
 		}
 	}
 
-	public void ativaProduto(Long codProduto) {
-		try{
-			PreparedStatement stmt = this.connection.prepareStatement("UPDATE produtos SET ativo = ? WHERE codProduto = ?");
+	public void ativaProduto(int codProduto) {
+		try {
+			PreparedStatement stmt = this.connection
+					.prepareStatement("UPDATE produtos SET ativo = ? WHERE codProduto = ?");
 			stmt.setBoolean(1, true);
 			stmt.setLong(2, codProduto);
 			stmt.execute();
 			stmt.close();
-		}catch (SQLException e){
+		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-		
+
 	}
-	public void desativaProduto(Long codProduto) {
-		try{
-			PreparedStatement stmt = this.connection.prepareStatement("UPDATE produtos SET ativo = ? WHERE codProduto = ?");
+
+	public void desativaProduto(int codProduto) {
+		try {
+			PreparedStatement stmt = this.connection
+					.prepareStatement("UPDATE produtos SET ativo = ? WHERE codProduto = ?");
 			stmt.setBoolean(1, false);
 			stmt.setLong(2, codProduto);
 			stmt.execute();
 			stmt.close();
-		}catch (SQLException e){
+		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-		
+
 	}
 
 }
