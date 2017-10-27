@@ -58,6 +58,9 @@ public class CotacaoDao {
 				cotacao.setIdCotacao(rs.getInt("codCotacao"));
 				cotacao.setAtivo(rs.getBoolean("ativo"));
 				cotacao.setData(rs.getDate("data"));
+				cotacao.setDataFinalizacao(rs.getDate("datafinalizacao"));
+				cotacao.setFinalizado(rs.getBoolean("finalizado"));
+				cotacao.setValorTotal(rs.getFloat("valortotal"));
 				cotacoes.add(cotacao);
 			}
 			rs.close();

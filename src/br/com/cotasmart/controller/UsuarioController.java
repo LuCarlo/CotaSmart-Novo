@@ -1,12 +1,13 @@
 package br.com.cotasmart.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.cotasmart.dao.UsuarioDao;
 import br.com.cotasmart.modelo.Usuario;
-
+@Transactional
 @Controller
 public class UsuarioController {
 

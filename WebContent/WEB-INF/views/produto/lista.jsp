@@ -12,9 +12,9 @@
 <body>
 	<c:import url="../layout/iniciarBody.jsp" />
 	<div class="centralizado">
-	<button type="button" class="btn btn-info" data-toggle="modal"
+		<button type="button" class="btn btn-info" data-toggle="modal"
 			data-target="#novoProduto">Novo Produto</button>
-			<br/>
+		<br />
 		<table class="table table-striped">
 			<tr>
 				<th>Nome</th>
@@ -28,14 +28,12 @@
 					<td>${produto.codBarras}</td>
 					<c:if test="${produto.ativo eq true}">
 						<td style="color: blue">Ativo</td>
-
 					</c:if>
 					<c:if test="${produto.ativo eq false}">
 						<td style="color: red">Inativo</td>
 
 					</c:if>
 					<td>
-
 						<button type="button" class="btn btn-info" data-toggle="modal"
 							data-target="#${produto.codProduto}">Alterar</button> <c:if
 							test="${produto.ativo eq true}">
@@ -75,8 +73,7 @@
 										<div class="form-group">
 											<label class="col-form-label" for="codBarras">Código
 												de Barras</label> <input type="text" class="form-control"
-												name="codBarras" required="required"
-												value="${produto.codBarras}">
+												name="codBarras" value="${produto.codBarras}">
 										</div>
 										<div style="text-align: center">
 											<button class="btn btn-success" type="submit">Salvar</button>
@@ -91,9 +88,6 @@
 						</div>
 					</div>
 				</form>
-
-
-
 			</c:forEach>
 		</table>
 	</div>
@@ -119,7 +113,7 @@
 						<div class="form-group">
 							<label class="col-form-label" for="codBarras">Código de
 								Barras</label> <input type="text" class="form-control" name="codBarras"
-								required="required" placeholder="000000000">
+								placeholder="000000000">
 						</div>
 						<div style="text-align: center">
 							<button class="btn btn-success" type="submit">Salvar</button>

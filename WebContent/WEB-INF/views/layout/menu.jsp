@@ -1,183 +1,51 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<style>
-.row {
-	margin-left: 0px;
-	margin-right: 0px;
-}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<!-- <nav class="navbar navbar-dark bg-dark"> -->
+	<a class="navbar-brand" href="#">Menu</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse"
+		data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+		aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarNavDropdown">
+		<ul class="navbar-nav">
+			<li class="nav-item active"><a class="nav-link" href="inicio">Início
+					<span class="sr-only">(current)</span>
+			</a></li>
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" href="#" id="navCotacao"
+				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Cotação </a>
+				<div class="dropdown-menu" aria-labelledby="navCotacao">
+					<a class="dropdown-item" href="listaCotacoes">Listar</a> <a
+						class="dropdown-item" href="#">Novo</a>
+				</div></li>
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" href="#" id="navFornecedor"
+				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Fornecedores </a>
+				<div class="dropdown-menu" aria-labelledby="navFornecedor">
+					<a class="dropdown-item" href="listaFornecedor">Listar</a> <a
+						class="dropdown-item" href="novoFornecedor">Novo</a>
+				</div></li>
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" href="#" id="navProdutos"
+				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Produtos </a>
+				<div class="dropdown-menu" aria-labelledby="navProdutos">
+					<a class="dropdown-item" href="listaProduto">Listar</a>
+				</div></li>
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" href="#" id="navUsuario"
+				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Usuários </a>
+				<div class="dropdown-menu" aria-labelledby="navUsuario">
+					<a class="dropdown-item" href="listaUsuario">Listar</a> <a
+						class="dropdown-item" href="novoUsuario">Novo</a>
+				</div></li>
 
-#wrapper {
-	padding-left: 70px;
-	transition: all .4s ease 0s;
-	height: 100%
-}
-
-#sidebar-wrapper {
-	margin-left: -150px;
-	left: 70px;
-	width: 150px;
-	background: #222;
-	position: fixed;
-	height: 100%;
-	z-index: 10000;
-	transition: all .4s ease 0s;
-}
-
-.sidebar-nav {
-	display: block;
-	float: left;
-	width: 150px;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-
-#page-content-wrapper {
-	padding-left: 0;
-	margin-left: 0;
-	width: 100%;
-	height: auto;
-}
-
-#wrapper.active {
-	padding-left: 150px;
-}
-
-#wrapper.active #sidebar-wrapper {
-	left: 150px;
-}
-
-#page-content-wrapper {
-	width: 100%;
-}
-
-#sidebar_menu li a, .sidebar-nav li a {
-	color: #999;
-	display: block;
-	float: left;
-	text-decoration: none;
-	width: 150px;
-	background: #252525;
-	border-top: 1px solid #373737;
-	border-bottom: 1px solid #1A1A1A;
-	-webkit-transition: background .5s;
-	-moz-transition: background .5s;
-	-o-transition: background .5s;
-	-ms-transition: background .5s;
-	transition: background .5s;
-}
-
-.sidebar_name {
-	padding-top: 25px;
-	color: #fff;
-	opacity: .7;
-}
-
-.sidebar-nav li {
-	line-height: 40px;
-	text-indent: 20px;
-}
-
-.sidebar-nav li a {
-	color: #999999;
-	display: block;
-	text-decoration: none;
-}
-
-.sidebar-nav li a:hover {
-	color: #fff;
-	background: rgba(255, 255, 255, 0.2);
-	text-decoration: none;
-}
-
-.sidebar-nav li a:active, .sidebar-nav li a:focus {
-	text-decoration: none;
-}
-
-.sidebar-nav>.sidebar-brand {
-	height: 65px;
-	line-height: 60px;
-	font-size: 18px;
-}
-
-.sidebar-nav>.sidebar-brand a {
-	color: #999999;
-}
-
-.sidebar-nav>.sidebar-brand a:hover {
-	color: #fff;
-	background: none;
-}
-
-#main_icon {
-	float: right;
-	padding-right: 65px;
-	padding-top: 20px;
-}
-
-.sub_icon {
-	float: right;
-	padding-right: 65px;
-	padding-top: 10px;
-}
-
-.content-header {
-	height: 65px;
-	line-height: 65px;
-}
-
-.content-header h1 {
-	margin: 0;
-	margin-left: 20px;
-	line-height: 65px;
-	display: inline-block;
-}
-
-@media ( max-width :767px) {
-	#wrapper {
-		padding-left: 70px;
-		transition: all .4s ease 0s;
-	}
-	#sidebar-wrapper {
-		left: 70px;
-	}
-	#wrapper.active {
-		padding-left: 150px;
-	}
-	#wrapper.active #sidebar-wrapper {
-		left: 150px;
-		width: 150px;
-		transition: all .4s ease 0s;
-	}
-}
-</style>
-	<script type="text/javascript">
-		$("#menu-toggle").click(function(e) {
-			e.preventDefault();
-			$("#wrapper").toggleClass("active");
-		});
-	</script>
-	<div id="wrapper" class="active">
-		<!-- Sidebar -->
-		<!-- Sidebar -->
-		<div id="sidebar-wrapper">
-			<ul id="sidebar_menu" class="sidebar-nav">
-				<li class="sidebar-brand"><a id="menu-toggle" href="#">Menu<span
-						id="main_icon" class="glyphicon glyphicon-align-justify"></span></a></li>
-			</ul>
-			<ul class="sidebar-nav" id="sidebar">
-				<li><a href="index.jsp">Início<span
-						class="sub_icon glyphicon glyphicon-link"></span></a></li>
-				<li><a href="AdicionaFornecedor.jsp">Fornecedores<span
-						class="sub_icon glyphicon glyphicon-link"></span></a></li>
-				<li><a>Usuários<span
-						class="sub_icon glyphicon glyphicon-link"></span></a></li>
-				<li><a href="#">Sair<span
-						class="sub_icon glyphicon glyphicon-link"></span></a></li>
-			</ul>
-		</div>
-		<!-- Page content -->
-		<div id="page-content-wrapper">
-			<!-- Keep all page content within the page-content inset div! -->
-			<div class="page-content inset"></div>
-		</div>
+		</ul>
 	</div>
+	<form class="form-inline">
+		<button class="btn btn-danger" type="submit">Sair</button>
+	</form>
+</nav>

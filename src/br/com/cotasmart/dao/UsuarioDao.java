@@ -65,7 +65,7 @@ public class UsuarioDao {
 			stmt.setString(3, usuario.getLogin());
 
 			stmt.execute();
-			System.out.println(usuario.getNome()+","+usuario.getLogin());
+			System.out.println(usuario.getNome() + "," + usuario.getLogin());
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -143,6 +143,28 @@ public class UsuarioDao {
 			stmt.execute();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
+		}
+	}
+
+	public boolean existeUsuario(Usuario usuario) {
+		if (usuario == null) {
+			throw new IllegalArgumentException("Usuário não deve ser nulo");
+		}
+		try {
+			String sql = "SELECT 1 FROM usuarios WHERE login = ? AND senha = ?";
+			PreparedStatement stmt = this.connection.prepareStatement(sql);
+			stmt.setString(1, usuario.getLogin());
+			stmt.setString(2, usuario.getSenha());
+			ResultSet rs = stmt.executeQuery();
+
+			boolean encontrado = rs.next();
+			rs.close();
+			stmt.close();
+			return encontrado;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+
 		}
 	}
 
