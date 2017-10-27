@@ -24,32 +24,51 @@ body {
 	padding-right: 100px;
 }
 
+.centralizarLogin {
+	position: absolute;
+	left: 25%;
+	top: 25%;
+	right: 25%;
+	bottom: 25%;
+}
+
+border
+
+
+:
+
+ 
+
+solid
+
+
+;
+}
 .centralizadoFormulario {
 	margin: 0 auto;
 	width: 700px;
-/* 	padding: 20px; */
-/* 	color: black; */
+	/* 	padding: 20px; */
+	/* 	color: black; */
 	align: center;
-/* 	padding-bottom: 10px; */
-/* 	padding-top : 10px; */
+	/* 	padding-bottom: 10px; */
+	/* 	padding-top : 10px; */
 	padding-left: 100px;
 	padding-right: 100px;
 }
-
 
 .divLista {
 	margin-top: 60px;
 	width: 600px;
 	padding: 20px;
-	
 }
-.alinhadoEsquerda{
+
+.alinhadoEsquerda {
 	align: left;
 }
 
-.alinhadoDireita{
+.alinhadoDireita {
 	text-align: right;
-/* 	padding-right: px; */
+	/* 	padding-right: px; */
 	padding-bottom: 10px;
 }
 }
