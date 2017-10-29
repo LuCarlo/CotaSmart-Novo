@@ -25,25 +25,11 @@ body {
 }
 
 .centralizarLogin {
-	position: absolute;
-	left: 25%;
-	top: 25%;
-	right: 25%;
-	bottom: 25%;
+	/* 	position: absolute; */
+	width: 500px;
+	border: solid;
 }
 
-border
-
-
-:
-
- 
-
-solid
-
-
-;
-}
 .centralizadoFormulario {
 	margin: 0 auto;
 	width: 700px;

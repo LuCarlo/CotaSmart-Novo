@@ -45,7 +45,13 @@
 
 		</ul>
 	</div>
-	<form class="form-inline">
+	<div>
+		<h5 style="color: white">Olá, ${usuarioLogado.nome}</h5>
+	</div>
+	&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+	<form class="form-inline" action="logout">
+
+
 		<button class="btn btn-danger" type="submit">Sair</button>
 	</form>
 </nav>

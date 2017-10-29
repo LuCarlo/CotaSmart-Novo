@@ -12,9 +12,10 @@
 <body>
 	<c:import url="../layout/iniciarBody.jsp" />
 	<div class="centralizado">
-		<button type="button" class="btn btn-info" data-toggle="modal"
-			data-target="#novoProduto">Novo Produto</button>
-		<br />
+		<form class="alinhadoDireita">
+			<button type="button" class="btn btn-info" data-toggle="modal"
+				data-target="#novoProduto">Novo Produto</button>
+		</form>
 		<table class="table table-striped">
 			<tr>
 				<th>Nome</th>

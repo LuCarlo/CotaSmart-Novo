@@ -14,32 +14,25 @@
 
 <!--Let browser know website is optimized for mobile-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" type="text/css" href="css/estilo.css">
-<script type="text/javascript" src="js/funcao.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="resources/css/estilo.css">
+<script type="text/javascript" src="resources/js/funcao.js"></script>
 
+
+
+<link rel="stylesheet" type="text/css" href="resources/css/login.css">
 <title>Login</title>
 </head>
 <body>
 
-	<form class="centralizarLogin">
-		<div class="form-group">
-			<label for="login">Login</label> <input
-				type="text" class="form-control" id="login"
-				aria-describedby="emailHelp" placeholder="Usuário"> <small
-				id="emailHelp" class="form-text text-muted">Não compartilhe seu usuário com ninguém.</small>
-		</div>
-		<div class="form-group">
-			<label for="senha">Senha</label> <input
-				type="password" class="form-control" id="senha"
-				placeholder="Senha">
-		</div>
-		<div class="form-check">
-			<label class="form-check-label"> <input type="checkbox"
-				class="form-check-input"> lembrar-me
-			</label>
-		</div>
-		<button type="submit" class="btn btn-primary">Entrar</button>
-	</form>
+	<div class="wrapper">
+		<form class="form-signin" action="efetuaLogin">
+			<h2 class="form-signin-heading">Cota Smart</h2>
+			<br /> <input type="text" class="form-control" name="login"
+				placeholder="Login" required="" autofocus="" /> <br /> <input
+				type="password" class="form-control" name="senha"
+				placeholder="Senha" required="" /> <br />
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+		</form>
+	</div>
 </body>
 </html>

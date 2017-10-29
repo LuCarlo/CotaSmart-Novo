@@ -7,7 +7,6 @@
 </head>
 <body>
 	<c:import url="../layout/iniciarBody.jsp" />
-
 	<!-- Inicio do formulário -->
 	<form class="centralizadoFormulario" action="adicionaUsuario">
 		<h5 class="centralizado">Adicionar Usuário</h5>

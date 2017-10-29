@@ -156,6 +156,7 @@ public class UsuarioDao {
 			stmt.setString(1, usuario.getLogin());
 			stmt.setString(2, usuario.getSenha());
 			ResultSet rs = stmt.executeQuery();
+			System.out.println(usuario.getLogin()+","+usuario.getSenha());
 
 			boolean encontrado = rs.next();
 			rs.close();
@@ -166,6 +167,25 @@ public class UsuarioDao {
 			throw new RuntimeException(e);
 
 		}
+	}
+	
+	public Usuario alimentarUsuario(Usuario usuario){
+		try{
+			PreparedStatement stmt = this.connection.prepareStatement("SELECT nome FROM usuarios WHERE login = ? AND ativo = true");
+			stmt.setString(1, usuario.getLogin());
+			ResultSet rs = stmt.executeQuery();
+			if(rs.next()){
+				Usuario u = new Usuario();
+				u.setNome(rs.getString("nome"));
+				return u;
+			}else{
+				return null;
+			}
+			
+		}catch(SQLException e){
+			throw new RuntimeException(e);
+		}
+		
 	}
 
 }

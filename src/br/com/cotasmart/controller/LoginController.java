@@ -22,9 +22,19 @@ public class LoginController {
 	public String efetuaLogin(Usuario usuario, HttpSession session) {
 		UsuarioDao dao = new UsuarioDao();
 		if (dao.existeUsuario(usuario)) {
-			session.setAttribute("usuarioLogado", usuario);
-			return "inicio";
+			Usuario u = new Usuario();
+			u = dao.alimentarUsuario(usuario);
+			session.setAttribute("usuarioLogado", u);
+			return "redirect:inicio";
+		}else{
+			return "redirect:login";	
 		}
+		
+	}
+	
+	@RequestMapping("logout")
+	public String logout(HttpSession session){
+		session.invalidate();
 		return "redirect:login";
 	}
 
