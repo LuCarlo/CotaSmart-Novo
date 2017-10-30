@@ -104,7 +104,7 @@ public class UsuarioDao {
 			ResultSet rs = stmt.executeQuery();
 			if (rs.next()) {
 				Usuario usuario = new Usuario();
-				usuario.setCodGrupo(rs.getInt("codGrupo"));
+				usuario.setAdministrador(rs.getBoolean("administrador"));
 				usuario.setAtivo(rs.getBoolean("ativo"));
 				usuario.setCodUsuario(rs.getLong("codUsuario"));
 				usuario.setLogin(rs.getString("login"));

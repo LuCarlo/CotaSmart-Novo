@@ -34,7 +34,7 @@ public class CreationFactory {
 					"login CHARACTER VARYING (20), "+
 					"senha CHARACTER VARYING (10), "+
 					"ativo BOOLEAN, "+
-					"codGrupo INTEGER REFERENCES gruposUsuario ON DELETE CASCADE, "+
+					"administrador BOOLEAN,"+
 					"CONSTRAINT pk_usuario PRIMARY KEY (codUsuario));" +
 					" "+
 					"CREATE TABLE IF NOT EXISTS uf ( "+
