@@ -34,8 +34,13 @@
 			<input type="text" class="form-control" name="login"
 				placeholder="Login" required="" autofocus="" /> <br /> <input
 				type="password" class="form-control" name="senha"
-				placeholder="Senha" required="" /><br /> <h6 class="erroLogin">Login
-				ou senha inválidos</h6><br />
+				placeholder="Senha" required="" /><br />
+			<div class="alert alert-danger" role="alert">
+				<strong>Erro:</strong> <label class="erroLogin">Login ou senha inválidos.</label> 
+			</div>
+
+
+			<br />
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
 		</form>
 	</div>

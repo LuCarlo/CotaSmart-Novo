@@ -14,6 +14,9 @@
 
 
 	<div class=centralizado>
+		<form class="alinhadoDireita" action="#">
+			<button type="submit" class="btn btn-info">Nova Cotação</button>
+		</form>
 		<table class="table table-striped">
 			<tr>
 				<th>Data</th>
