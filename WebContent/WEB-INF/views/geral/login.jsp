@@ -26,8 +26,10 @@
 
 	<div class="wrapper">
 		<form class="form-signin" action="efetuaLogin">
-			<h2 class="form-signin-heading">Cota Smart</h2>
-			<br /> <input type="text" class="form-control" name="login"
+			<div class="centralizaLogo">
+				<img src="resources/imagens/logo.png" />
+			</div>
+			<input type="text" class="form-control" name="login"
 				placeholder="Login" required="" autofocus="" /> <br /> <input
 				type="password" class="form-control" name="senha"
 				placeholder="Senha" required="" /> <br />
