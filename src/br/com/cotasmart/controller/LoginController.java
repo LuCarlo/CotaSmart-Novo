@@ -17,6 +17,11 @@ public class LoginController {
 	public String login() {
 		return "geral/login";
 	}
+	
+	@RequestMapping("loginErro")
+	public String loginErro(){
+		return "geral/loginErro";
+	}
 
 	@RequestMapping("efetuaLogin")
 	public String efetuaLogin(Usuario usuario, HttpSession session) {
@@ -25,9 +30,10 @@ public class LoginController {
 			Usuario u = new Usuario();
 			u = dao.alimentarUsuario(usuario);
 			session.setAttribute("usuarioLogado", u);
-			return "redirect:inicio";
+			return "redirect:listaCotacoes";
 		}else{
-			return "redirect:login";	
+			
+			return "redirect:loginErro";
 		}
 		
 	}

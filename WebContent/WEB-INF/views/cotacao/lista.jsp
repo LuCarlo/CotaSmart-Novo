@@ -24,7 +24,7 @@
 			<c:forEach items="${cotacoes}" var="cotacao">
 				<tr>
 					<td>${cotacao.data}</td>
-					<td>R$: ${cotacao.valorTotal}</td>
+					<td>R$ ${cotacao.valorTotal}</td>
 					<c:if test="${cotacao.finalizado eq true}">
 						<td style="color: red">Finalizado</td>
 					</c:if>

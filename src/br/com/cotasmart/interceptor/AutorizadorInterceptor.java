@@ -12,7 +12,7 @@ public class AutorizadorInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws IOException {
 		String uri = request.getRequestURI();
-		if (uri.endsWith("login") || (uri.endsWith("efetuaLogin")) || (uri.contains("resources"))) {
+		if (uri.endsWith("login") || (uri.endsWith("efetuaLogin")) || (uri.contains("resources")) || (uri.endsWith("loginErro"))  ) {
 			return true;
 		}
 

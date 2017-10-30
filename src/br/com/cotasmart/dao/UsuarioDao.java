@@ -82,11 +82,13 @@ public class UsuarioDao {
 				usuario.setLogin(rs.getString("login"));
 				usuario.setNome(rs.getString("nome"));
 				usuario.setCodUsuario(rs.getLong("codUsuario"));
-				if (rs.getBoolean("ativo")) {
-					usuario.setAtivo(true);
-				} else {
-					usuario.setAtivo(false);
-				}
+				usuario.setAtivo(rs.getBoolean("ativo"));
+				usuario.setAdministrador(rs.getBoolean("administrador"));
+//				if (rs.getBoolean("ativo")) {
+//					usuario.setAtivo(true);
+//				} else {
+//					usuario.setAtivo(false);
+//				}
 				usuarios.add(usuario);
 			}
 			rs.close();

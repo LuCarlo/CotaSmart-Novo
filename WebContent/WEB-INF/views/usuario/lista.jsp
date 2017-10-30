@@ -17,14 +17,14 @@
 
 	<div class="centralizado">
 		<form class="alinhadoDireita" action="novoUsuario">
-			<button type="submit" class="btn btn-info">Novo
-				Usuário</button>
+			<button type="submit" class="btn btn-info">Novo Usuário</button>
 		</form>
 		<table class="table table-striped">
 
 			<tr>
 				<th scope="col">Usuário</th>
 				<th scope="col">Nome</th>
+				<th>Função</th>
 				<th scope="col">Status</th>
 				<th scope="col">Ação</th>
 			</tr>
@@ -32,6 +32,14 @@
 				<tr>
 					<td>${usuario.login}</td>
 					<td>${usuario.nome}</td>
+					<c:if test="${usuario.administrador eq true}">
+						<td style="color: blue">Administrador</td>
+					</c:if>
+					<c:if test="${usuario.administrador eq false}">
+						<td style="color: green">Fornecedor</td>
+					</c:if>
+
+
 					<c:if test="${usuario.ativo eq true}">
 						<td style="color: blue">Ativo</td>
 

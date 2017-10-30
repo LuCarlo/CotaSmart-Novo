@@ -155,3 +155,7 @@ function formataCampo(campo, Mascara, evento) {
 function voltar() {
 	window.setTimeout(function(){history.go(-1)},1000);
 }
+
+function erroLogin(){
+	alert("Login ou Senha Incorreto")
+}
