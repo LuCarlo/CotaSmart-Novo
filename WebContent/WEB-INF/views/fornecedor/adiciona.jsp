@@ -6,6 +6,7 @@
 <meta charset="ISO-8859-1">
 <c:import url="../layout/iniciarHead.jsp" />
 <title>Adicionar Fornecedor</title>
+
 </head>
 <body>
 	<c:import url="../layout/iniciarBody.jsp" />
@@ -27,7 +28,6 @@
 				type="text" class="form-control" name="endereco" required="required"
 				placeholder="Ex: Quadra 10">
 		</div>
-
 		<table>
 			<tr>
 				<!-- Telefone 1 -->
@@ -78,6 +78,5 @@
 					class="btn btn-danger">Cancelar</button></a>
 		</div>
 	</form>
-
 </body>
 </html>

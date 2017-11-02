@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import br.com.cotasmart.factory.ConnectionFactory;
 import br.com.cotasmart.modelo.Cotacao;
 import br.com.cotasmart.modelo.Usuario;

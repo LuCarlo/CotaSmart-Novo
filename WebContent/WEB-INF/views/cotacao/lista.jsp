@@ -23,7 +23,9 @@
 			<tr>
 				<th>Data</th>
 				<th>Valor Total</th>
+				<th>Situação</th>
 				<th>Status</th>
+				
 				<th>Data Finalização</th>
 			</tr>
 			<c:forEach items="${cotacoes}" var="cotacao">
@@ -35,6 +37,12 @@
 					</c:if>
 					<c:if test="${cotacao.finalizado eq false}">
 						<td style="color: blue">Em Aberto</td>
+					</c:if>
+					<c:if test="${cotacao.ativo eq true}">
+						<td style="color: blue">Ativo</td>
+					</c:if>
+					<c:if test="${cotacao.ativo eq false}">
+						<td style="color: red">Inativo</td>
 					</c:if>
 					<td>${cotacao.dataFinalizacao}</td>
 				</tr>
