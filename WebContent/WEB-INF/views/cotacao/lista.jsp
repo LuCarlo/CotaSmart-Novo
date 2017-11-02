@@ -14,9 +14,11 @@
 
 
 	<div class=centralizado>
-		<form class="alinhadoDireita" action="#">
-			<button type="submit" class="btn btn-info">Nova Cotação</button>
-		</form>
+		<c:if test="${usuarioLogado.administrador eq true}">
+			<form class="alinhadoDireita" action="#">
+				<button type="submit" class="btn btn-info">Nova Cotação</button>
+			</form>
+		</c:if>
 		<table class="table table-striped">
 			<tr>
 				<th>Data</th>

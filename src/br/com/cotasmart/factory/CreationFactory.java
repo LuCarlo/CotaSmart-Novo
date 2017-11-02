@@ -16,8 +16,21 @@ public class CreationFactory {
 
 	}
 	
-	public void criarTabelas() throws SQLException{
-		String SQL = "CREATE TABLE IF NOT EXISTS status ( "+
+	public void criarTabelas() throws SQLException{ 	
+		String SQL =
+					"DROP TABLE cidades CASCADE; "+
+					"DROP TABLE cotacao CASCADE; "+
+					"DROP TABLE cotacaoprodutos CASCADE; "+
+					"DROP TABLE empresa CASCADE; "+
+					"DROP TABLE fornecedores CASCADE; "+
+					"DROP TABLE grupoprodutos CASCADE; "+
+					"DROP TABLE gruposUsuario CASCADE; "+
+					"DROP TABLE produtos CASCADE; "+
+					"DROP TABLE status CASCADE; "+
+					"DROP TABLE uf CASCADE; "+
+					"DROP TABLE usuarios CASCADE;"+
+						" "+
+					"CREATE TABLE IF NOT EXISTS status ( "+
 					"codStatus SERIAL, "+
 					"nome CHARACTER VARYING (20), "+
 					"tipo CHARACTER VARYING (1),"+
@@ -88,11 +101,27 @@ public class CreationFactory {
 					"codCotacaoProdutos SERIAL, "+
 					"codCotacao INTEGER REFERENCES cotacao ON DELETE CASCADE, "+
 					"codProduto INTEGER REFERENCES produtos ON DELETE CASCADE, " +
-					"codFornecedor INTEGER REFERENCES fornecedores ON DELETE CASCADE);";
+					"codFornecedor INTEGER REFERENCES fornecedores ON DELETE CASCADE);"+
+					" "+
+					"CREATE TABLE IF NOT EXISTS empresa ("+
+					"codEmpresa SERIAL,"+
+					"nome CHARACTER VARYING(50),"+
+					"cnpj CHARACTER VARYING(20),"+
+					"endereco CHARACTER VARYING (100),"+
+					"telefone1 CHARACTER VARYING (20),"+
+					"telefone2 CHARACTER VARYING (20),"+
+					"CONSTRAINT pk_empresa PRIMARY KEY (codEmpresa) ); "+
+					" "+
+					"INSERT INTO empresa (nome) VALUES('Minha empresa');"+
+					"INSERT INTO usuarios (nome,login,senha,administrador,ativo) VALUES ('Administrador', 'admin', '1234', true, true);"+
+					"INSERT INTO usuarios (nome,login,senha,administrador,ativo) VALUES ('Fornecedor', 'fornecedor', '1234', false, true);"+
+					"";
+					
 	
 		try {
 			PreparedStatement stmt = connection.prepareStatement(SQL);
-			stmt.execute();	
+			stmt.execute();
+			stmt.close();
 		} catch (SQLException e) {
 			System.out.println("Erro ao criar tabelas "+e.getMessage());
 			throw new RuntimeException(e);

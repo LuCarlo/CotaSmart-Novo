@@ -9,8 +9,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import br.com.cotasmart.factory.ConnectionFactory;
 import br.com.cotasmart.modelo.Cotacao;
+import br.com.cotasmart.modelo.Usuario;
 
 public class CotacaoDao {
 	private Connection connection;
@@ -48,10 +51,16 @@ public class CotacaoDao {
 		}
 	}
 
-	public List<Cotacao> getLista() {
+	public List<Cotacao> getLista(Usuario usuario) {
 		try {
 			List<Cotacao> cotacoes = new ArrayList<Cotacao>();
-			PreparedStatement stmt = this.connection.prepareStatement("SELECT * FROM cotacao ORDER BY data");
+			String sql ="";
+			if(usuario.isAdministrador()){
+				sql = "SELECT * FROM cotacao ORDER BY data";
+			}else if(usuario.isAdministrador() == false){
+				sql = "SELECT * FROM cotacao WHERE finalizado = false AND ativo = true ORDER BY data";
+			}
+			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				Cotacao cotacao = new Cotacao();

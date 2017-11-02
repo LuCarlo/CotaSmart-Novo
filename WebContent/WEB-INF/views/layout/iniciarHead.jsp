@@ -1,5 +1,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link rel="shortcut icon" href="resources/imagens/favicon.png" type="image/x-icon" />
+<link rel="shortcut icon" href="resources/imagens/favicon.png"
+	type="image/x-icon" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <link rel="stylesheet"
@@ -10,6 +11,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" type="text/css" href="resources/css/estilo.css">
 <script type="text/javascript" src="resources/js/funcao.js"></script>
-
-<c:import url="../layout/menu.jsp" />
+<c:if test="${usuarioLogado.administrador eq true}">
+	<c:import url="../layout/menu.jsp" />
+</c:if>
+<c:if test="${usuarioLogado.administrador eq false}">
+	<c:import url="../layout/menuFornecedor.jsp" />
+</c:if>
 <hr />

@@ -15,7 +15,7 @@
 		<div class="form-group">
 			<label class="col-form-label" for="nome">Nome</label> <input
 				type="text" class="form-control" name="nome" required="required"
-				value="${usuario.nome}">
+				disabled value="${usuario.nome}">
 		</div>
 		<!-- Login -->
 		<div class="form-group">

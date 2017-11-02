@@ -12,8 +12,8 @@
 	<div class="collapse navbar-collapse" id="navbarNavDropdown">
 		<!-- 		<ul class="navbar-nav"> -->
 		<ul class="navbar-nav bd-navbar-nav flex-row">
-			<li class="nav-item active"><a class="nav-link" href="inicio"
-				style="color: white;">Início <span class="sr-only">(current)</span>
+			<li class="nav-item active"><a class="nav-link" href="mostrarMinhaEmpresa"
+				style="color: white;">Minha Empresa <span class="sr-only">(current)</span>
 			</a></li>
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle" href="#" id="navCotacao"

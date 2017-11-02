@@ -84,11 +84,11 @@ public class UsuarioDao {
 				usuario.setCodUsuario(rs.getLong("codUsuario"));
 				usuario.setAtivo(rs.getBoolean("ativo"));
 				usuario.setAdministrador(rs.getBoolean("administrador"));
-//				if (rs.getBoolean("ativo")) {
-//					usuario.setAtivo(true);
-//				} else {
-//					usuario.setAtivo(false);
-//				}
+				// if (rs.getBoolean("ativo")) {
+				// usuario.setAtivo(true);
+				// } else {
+				// usuario.setAtivo(false);
+				// }
 				usuarios.add(usuario);
 			}
 			rs.close();
@@ -158,7 +158,7 @@ public class UsuarioDao {
 			stmt.setString(1, usuario.getLogin());
 			stmt.setString(2, usuario.getSenha());
 			ResultSet rs = stmt.executeQuery();
-			System.out.println(usuario.getLogin()+","+usuario.getSenha());
+			System.out.println(usuario.getLogin() + "," + usuario.getSenha());
 
 			boolean encontrado = rs.next();
 			rs.close();
@@ -170,24 +170,27 @@ public class UsuarioDao {
 
 		}
 	}
-	
-	public Usuario alimentarUsuario(Usuario usuario){
-		try{
-			PreparedStatement stmt = this.connection.prepareStatement("SELECT nome FROM usuarios WHERE login = ? AND ativo = true");
+
+	public Usuario alimentarUsuario(Usuario usuario) {
+		try {
+			PreparedStatement stmt = this.connection.prepareStatement(
+					"SELECT nome, administrador, codusuario FROM usuarios WHERE login = ? AND ativo = true");
 			stmt.setString(1, usuario.getLogin());
 			ResultSet rs = stmt.executeQuery();
-			if(rs.next()){
+			if (rs.next()) {
 				Usuario u = new Usuario();
 				u.setNome(rs.getString("nome"));
+				u.setAdministrador(rs.getBoolean("administrador"));
+				u.setCodUsuario(rs.getLong("codusuario"));
 				return u;
-			}else{
+			} else {
 				return null;
 			}
-			
-		}catch(SQLException e){
+
+		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-		
+
 	}
 
 }
