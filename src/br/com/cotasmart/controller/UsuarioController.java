@@ -37,6 +37,15 @@ public class UsuarioController {
 		return "usuario/lista";
 
 	}
+	
+	@RequestMapping("listaUsuarioTelaFornecedor")
+	public String listaTelaFornecedor(Model model) {
+		UsuarioDao dao = new UsuarioDao();
+		System.out.println("listando usuario tela fornecedor");
+		model.addAttribute("usuarios", dao.getLista());
+		return "fornecedor/adiciona";
+	}
+	
 
 	@RequestMapping("mostraUsuario")
 	public String mostra(Long codUsuario, Model model) {

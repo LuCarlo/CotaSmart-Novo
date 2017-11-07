@@ -24,7 +24,7 @@
 			<tr>
 				<th scope="col">Usuário</th>
 				<th scope="col">Nome</th>
-				<th>Função</th>
+				<th scope="col">Função</th>
 				<th scope="col">Status</th>
 				<th scope="col">Ação</th>
 			</tr>

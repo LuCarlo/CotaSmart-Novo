@@ -9,6 +9,7 @@ import java.util.List;
 
 import br.com.cotasmart.factory.ConnectionFactory;
 import br.com.cotasmart.modelo.Fornecedor;
+import br.com.cotasmart.modelo.Usuario;
 
 public class FornecedorDao {
 	private Connection connection;
@@ -21,10 +22,10 @@ public class FornecedorDao {
 		}
 	}
 
-	public void adiciona(Fornecedor fornecedor) {
+	public void adiciona(Fornecedor fornecedor, Usuario usuario) {
 
-		String sql = "INSERT INTO fornecedores (" + "nome, endereco, telefone1, telefone2, telefone3, cnpj, ativo) "
-				+ "VALUES (?,?,?,?,?,?,?) ";
+		String sql = "INSERT INTO fornecedores (" + "nome, endereco, telefone1, telefone2, telefone3, cnpj, ativo, cidade, uf, codusuario) "
+				+ "VALUES (?,?,?,?,?,?,?,?,?,?) ";
 		try {
 
 			PreparedStatement stmt = connection.prepareStatement(sql);
@@ -35,6 +36,10 @@ public class FornecedorDao {
 			stmt.setString(5, fornecedor.getTelefone3());
 			stmt.setString(6, fornecedor.getCnpj());
 			stmt.setBoolean(7, true);
+			stmt.setString(8, fornecedor.getCidade());
+			stmt.setString(9, fornecedor.getUf());
+			stmt.setLong(10, usuario.getCodUsuario());
+			
 
 			stmt.execute();
 			stmt.close();
@@ -47,7 +52,7 @@ public class FornecedorDao {
 
 	public void altera(Fornecedor fornecedor) {
 		String sql = "update fornecedores set nome=?, endereco=?, telefone1=?,"
-				+ "telefone2=?, telefone3=?, cnpj=? where codFornecedor=?";
+				+ "telefone2=?, telefone3=?, cnpj=?, cidade=?, uf=? where codFornecedor=?";
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
@@ -57,7 +62,9 @@ public class FornecedorDao {
 			stmt.setString(4, fornecedor.getTelefone2());
 			stmt.setString(5, fornecedor.getTelefone3());
 			stmt.setString(6, fornecedor.getCnpj());
-			stmt.setLong(7, fornecedor.getCodFornecedor());
+			stmt.setString(7, fornecedor.getCidade());
+			stmt.setString(8, fornecedor.getUf());
+			stmt.setLong(9, fornecedor.getCodFornecedor());
 
 			stmt.execute();
 			stmt.close();
@@ -98,7 +105,8 @@ public class FornecedorDao {
 				fornecedor.setTelefone2(rs.getString("telefone2"));
 				fornecedor.setTelefone3(rs.getString("telefone3"));
 				fornecedor.setAtivo(rs.getBoolean("ativo"));
-
+				fornecedor.setCidade(rs.getString("cidade"));
+				fornecedor.setUf(rs.getString("uf"));
 				fornecedores.add(fornecedor);
 			}
 			rs.close();
@@ -144,6 +152,8 @@ public class FornecedorDao {
 				fornecedor.setTelefone1(rs.getString("telefone1"));
 				fornecedor.setTelefone2(rs.getString("telefone2"));
 				fornecedor.setTelefone3(rs.getString("telefone3"));
+				fornecedor.setCidade(rs.getString("cidade"));
+				fornecedor.setUf(rs.getString("uf"));
 				stmt.close();
 				rs.close();
 				return fornecedor;

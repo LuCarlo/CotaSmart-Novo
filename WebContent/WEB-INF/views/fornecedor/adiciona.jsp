@@ -28,6 +28,39 @@
 				type="text" class="form-control" name="endereco" required="required"
 				placeholder="Ex: Quadra 10">
 		</div>
+
+		<table>
+			<tr>
+				<td><select class="custom-select" name="uf">
+						<option selected>UF</option>
+						<option value="AC">AC</option>
+						<option value="AL">AL</option>
+						<option value="AM">AM</option>
+						<option value="AP">AP</option>
+						<option value="BA">BA</option>
+						<option value="CE">CE</option>
+						<option value="DF">DF</option>
+						<option value="ES">ES</option>
+						<option value="GO">GO</option>
+						<option value="MA">MA</option>
+						<option value="MG">MG</option>
+						<option value="PA">PA</option>
+						<option value="PB">PB</option>
+						<option value="PE">PE</option>
+						<option value="PI">PI</option>
+						<option value="PR">PR</option>
+						<option value="RJ">RJ</option>
+						<option value="RN">RN</option>
+						<option value="RO">RO</option>
+						<option value="RS">RS</option>
+						<option value="SP">SP</option>
+						<option value="TO">TO</option>
+				</select></td>
+				<td><input type="text" class="form-control" name="cidade"
+					required="required" placeholder="Cidade"
+					style="text-transform: uppercase"></td>
+			</tr>
+		</table>
 		<table>
 			<tr>
 				<!-- Telefone 1 -->
@@ -59,7 +92,6 @@
 							pattern=".{14,}" class="validate" maxlength="14"
 							required="required" placeholder="(00) 0000-0000">
 					</div>
-
 				</td>
 			</tr>
 		</table>
@@ -72,11 +104,61 @@
 				onKeyPress="MascaraCNPJ(form.cnpj);"
 				placeholder="00.000.000/0000-00">
 		</div>
+		<!-- 		Vincular usuário -->
+		<div class="alinhadoDireita">
+
+			<button type="button" class="btn btn-primary" data-toggle="modal"
+				data-target="#listaUsuario">Vincular Usuário</button>
+
+		</div>
+
 		<div class="centralizarTexto">
 			<input class="btn btn-success" type="submit" value="Salvar" /> <a
 				href="listaFornecedor"><button type="button"
 					class="btn btn-danger">Cancelar</button></a>
 		</div>
 	</form>
+
+	<!-- 	Modal Usuários -->
+	<div class="modal fade" id="listaUsuario" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Vincular
+						Usuário</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<table class="table table-striped">
+
+						<tr>
+							<th scope="col">Vincular</th>
+							<th scope="col">Usuário</th>
+							<th scope="col">Nome</th>
+						</tr>
+						<c:forEach items="${usuarios}" var="usuario">
+							<tr>
+								<td><input type="radio" name="codUsuario"
+									value="${usuario.codUsuario}"><br></td>
+
+								<td>${usuario.login}</td>
+								<td>${usuario.nome}</td>
+							</tr>
+						</c:forEach>
+					</table>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Fechar</button>
+					<button type="submit" class="btn btn-success">Salvar</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

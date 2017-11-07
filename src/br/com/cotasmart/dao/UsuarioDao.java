@@ -84,11 +84,6 @@ public class UsuarioDao {
 				usuario.setCodUsuario(rs.getLong("codUsuario"));
 				usuario.setAtivo(rs.getBoolean("ativo"));
 				usuario.setAdministrador(rs.getBoolean("administrador"));
-				// if (rs.getBoolean("ativo")) {
-				// usuario.setAtivo(true);
-				// } else {
-				// usuario.setAtivo(false);
-				// }
 				usuarios.add(usuario);
 			}
 			rs.close();

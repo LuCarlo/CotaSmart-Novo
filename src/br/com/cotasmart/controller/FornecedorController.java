@@ -5,9 +5,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.com.cotasmart.dao.CidadeDao;
 import br.com.cotasmart.dao.FornecedorDao;
 import br.com.cotasmart.modelo.Fornecedor;
+import br.com.cotasmart.modelo.Usuario;
 
 @Transactional
 @Controller
@@ -15,14 +15,14 @@ public class FornecedorController {
 
 	@RequestMapping("novoFornecedor")
 	public String form(Model model) {
-		CidadeDao dao = new CidadeDao();
-		return "fornecedor/adiciona";
+		return "forward:listaUsuarioTelaFornecedor";
+		
 	}
 
 	@RequestMapping("adicionaFornecedor")
-	public String adiciona(Fornecedor fornecedor) {
+	public String adiciona(Fornecedor fornecedor, Usuario usuario) {
 		FornecedorDao dao = new FornecedorDao();
-		dao.adiciona(fornecedor);
+		dao.adiciona(fornecedor, usuario);
 		return "fornecedor/adiciona";
 	}
 
@@ -46,7 +46,7 @@ public class FornecedorController {
 		FornecedorDao dao = new FornecedorDao();
 		model.addAttribute("fornecedores", dao.buscaPorId(codFornecedor));
 		
-		return("alimentarCidades");
+		return("fornecedor/mostra");
 	}
 
 	@RequestMapping("ativaFornecedor")

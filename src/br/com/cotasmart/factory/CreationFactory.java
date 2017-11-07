@@ -29,7 +29,7 @@ public class CreationFactory {
 					"DROP TABLE status CASCADE; "+
 					"DROP TABLE uf CASCADE; "+
 					"DROP TABLE usuarios CASCADE;"+
-						" "+
+					" "+
 					"CREATE TABLE IF NOT EXISTS status ( "+
 					"codStatus SERIAL, "+
 					"nome CHARACTER VARYING (20), "+
@@ -66,11 +66,12 @@ public class CreationFactory {
 					"cnpj CHARACTER VARYING (20),"+	
 					"nome CHARACTER VARYING (50), "+
 					"endereco CHARACTER VARYING (100), "+
-					"codCidade INTEGER REFERENCES cidades ON DELETE CASCADE, "+
+					"cidade CHARACTER VARYING(100), "+
+					"uf CHARACTER VARYING (2), "+
 					"telefone1 CHARACTER VARYING(20), "+
 					"telefone2 CHARACTER VARYING(20), "+
 					"telefone3 CHARACTER VARYING(20), "+
-					"codUsuario INTEGER REFERENCES gruposUsuario ON DELETE CASCADE, "+
+					"codUsuario INTEGER REFERENCES usuarios ON DELETE CASCADE, "+
 					"ativo boolean, "+
 					"CONSTRAINT pk_fornecedores PRIMARY KEY (codFornecedor));"+
 					" "+
@@ -113,15 +114,15 @@ public class CreationFactory {
 					"CONSTRAINT pk_empresa PRIMARY KEY (codEmpresa) ); "+
 					" "+
 					"INSERT INTO empresa (nome) VALUES('Minha empresa');"+
-					"INSERT INTO usuarios (nome,login,senha,administrador,ativo) VALUES ('Administrador', 'admin', '1234', true, true);"+
-					"INSERT INTO usuarios (nome,login,senha,administrador,ativo) VALUES ('Fornecedor', 'fornecedor', '1234', false, true);"+
+					"INSERT INTO usuarios (nome,login,senha,administrador,ativo) VALUES ('Administrador', 'admin', '123', true, true);"+
+					"INSERT INTO usuarios (nome,login,senha,administrador,ativo) VALUES ('Fornecedor', 'fornecedor', '123', false, true);"+
 					"";
 					
 	
 		try {
 			PreparedStatement stmt = connection.prepareStatement(SQL);
-//			stmt.execute();
-//			stmt.close();
+			stmt.execute();
+			stmt.close();
 			alimentarCidades();
 		} catch (SQLException e) {
 			System.out.println("Erro ao criar tabelas "+e.getMessage());

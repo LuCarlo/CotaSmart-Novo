@@ -28,6 +28,19 @@
 				type="text" class="form-control" name="endereco" required="required"
 				value="${fornecedores.endereco}">
 		</div>
+		<table>
+			<tr>
+				<td><select class="custom-select" name="ufMostra" disabled>
+						<option selected >${fornecedores.uf}</option>
+				</select></td>
+				<td><input type="text" class="form-control" name="cidadeMostra" disabled
+					required="required" placeholder="${fornecedores.cidade}" style="text-transform:uppercase"></td>
+			</tr>
+		</table>
+		<input type="hidden" value="${fornecedores.uf}" name="uf" >
+		<input type="hidden" value="${fornecedores.cidade}" name="cidade" >
+		
+		
 
 		<table>
 			<tr>

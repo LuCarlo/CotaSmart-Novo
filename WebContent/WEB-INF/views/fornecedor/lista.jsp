@@ -69,7 +69,7 @@
 										<span aria-hidden="true">&times;</span>
 									</button>
 								</div>
-								<div class="modal-body">${fornecedor.endereco}</div>
+								<div class="modal-body">${fornecedor.endereco} ${fornecedor.cidade} - ${fornecedor.uf}</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-secondary"
 										data-dismiss="modal">Fechar</button>
