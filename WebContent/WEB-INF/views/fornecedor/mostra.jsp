@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <c:import url="../layout/iniciarHead.jsp" />
-<title>Editar Fornecedor</title>
+<title>Alterar Fornecedor</title>
 </head>
 <body>
 	<c:import url="../layout/iniciarBody.jsp" />
@@ -31,17 +31,15 @@
 		<table>
 			<tr>
 				<td><select class="custom-select" name="ufMostra" disabled>
-						<option selected >${fornecedores.uf}</option>
+						<option selected>${fornecedores.uf}</option>
 				</select></td>
-				<td><input type="text" class="form-control" name="cidadeMostra" disabled
-					required="required" placeholder="${fornecedores.cidade}" style="text-transform:uppercase"></td>
+				<td><input type="text" class="form-control" name="cidadeMostra"
+					disabled required="required" placeholder="${fornecedores.cidade}"
+					style="text-transform: uppercase"></td>
 			</tr>
 		</table>
-		<input type="hidden" value="${fornecedores.uf}" name="uf" >
-		<input type="hidden" value="${fornecedores.cidade}" name="cidade" >
-		
-		
-
+		<input type="hidden" value="${fornecedores.uf}" name="uf"> <input
+			type="hidden" value="${fornecedores.cidade}" name="cidade">
 		<table>
 			<tr>
 				<!-- Telefone 1 -->
@@ -85,6 +83,14 @@
 				pattern=".{15,}" class="validate" maxlength="18"
 				onKeyPress="MascaraCNPJ(form.cnpj);" value="${fornecedores.cnpj}">
 		</div>
+
+
+		<div class="form-group">
+			<label class="col-form-label" for="mostraUsuario">Usuário</label> <input
+				type="text" class="form-control" name="mostraUsuario" disabled
+				value="${fornecedores.nomeUsuario}">
+		</div>
+
 		<div class="centralizarTexto">
 			<input class="btn btn-success" type="submit" value="Salvar" /> <a
 				href="listaFornecedor"><button type="button"

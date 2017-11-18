@@ -33,7 +33,7 @@ public class UsuarioDao {
 				// Se já estiver um login retornar a mensagem para a tela
 				return false;
 			} else {
-				String sql = "INSERT INTO usuarios (nome, login, senha, ativo) VALUES (?,?,?,?) ";
+				String sql = "INSERT INTO usuarios (nome, login, senha, ativo, administrador) VALUES (?,?,?,?,?) ";
 				try {
 
 					PreparedStatement stmt = connection.prepareStatement(sql);
@@ -41,6 +41,7 @@ public class UsuarioDao {
 					stmt.setString(2, usuario.getLogin());
 					stmt.setString(3, usuario.getSenha());
 					stmt.setBoolean(4, true);
+					stmt.setBoolean(5, usuario.isAdministrador());
 					stmt.execute();
 					return true;
 				} catch (SQLException e) {

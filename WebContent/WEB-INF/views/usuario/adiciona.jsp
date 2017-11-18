@@ -30,11 +30,11 @@
 				required="required" placeholder="Ex: 123456">
 		</div>
 
-		Grupo do Usuário <br>
+		<label class="col-form-label" for="administrador">Tipo de usuário</label>
 		<div class="form-group">
-			<select id="inputState" class="form-control" required="required">
-				<option>Administrador</option>
-				<option>Fornecedor</option>
+			<select name="administrador" class="custom-select" required="required">
+				<option value="true">Administrador</option>
+				<option value ="false">Fornecedor</option>
 			</select>
 		</div>
 

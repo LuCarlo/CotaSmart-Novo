@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.cotasmart.dao.FornecedorDao;
 import br.com.cotasmart.modelo.Fornecedor;
-import br.com.cotasmart.modelo.Usuario;
 
 @Transactional
 @Controller
@@ -20,10 +19,11 @@ public class FornecedorController {
 	}
 
 	@RequestMapping("adicionaFornecedor")
-	public String adiciona(Fornecedor fornecedor, Usuario usuario) {
+	public String adiciona(Fornecedor fornecedor) {
 		FornecedorDao dao = new FornecedorDao();
-		dao.adiciona(fornecedor, usuario);
-		return "fornecedor/adiciona";
+		dao.adiciona(fornecedor);
+		return "redirect:listaFornecedor";
+//		return "fornecedor/adicionaSucesso";
 	}
 
 	@RequestMapping("listaFornecedor")

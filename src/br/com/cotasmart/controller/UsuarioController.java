@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.cotasmart.dao.UsuarioDao;
 import br.com.cotasmart.modelo.Usuario;
+
 @Transactional
 @Controller
 public class UsuarioController {
@@ -18,16 +19,12 @@ public class UsuarioController {
 
 	@RequestMapping("adicionaUsuario")
 	public String adiciona(Usuario usuario) {
-		if (usuario != null) {
-			UsuarioDao dao = new UsuarioDao();
-			if(dao.adiciona(usuario)){
-				return "redirect:listaUsuario";	
-			}else{
-				return "RESOLVER FUTURAMENTE";
-			}
+		UsuarioDao dao = new UsuarioDao();
+		if (dao.adiciona(usuario)) {
+			return "redirect:listaUsuario";
+		} else {
+			return "RESOLVER FUTURAMENTE";
 		}
-		System.out.println("deu ruim");
-		return "www.google.com.br";
 	}
 
 	@RequestMapping("listaUsuario")
@@ -37,7 +34,7 @@ public class UsuarioController {
 		return "usuario/lista";
 
 	}
-	
+
 	@RequestMapping("listaUsuarioTelaFornecedor")
 	public String listaTelaFornecedor(Model model) {
 		UsuarioDao dao = new UsuarioDao();
@@ -45,7 +42,6 @@ public class UsuarioController {
 		model.addAttribute("usuarios", dao.getLista());
 		return "fornecedor/adiciona";
 	}
-	
 
 	@RequestMapping("mostraUsuario")
 	public String mostra(Long codUsuario, Model model) {

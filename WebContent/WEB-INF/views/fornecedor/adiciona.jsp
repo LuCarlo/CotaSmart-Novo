@@ -104,13 +104,30 @@
 				onKeyPress="MascaraCNPJ(form.cnpj);"
 				placeholder="00.000.000/0000-00">
 		</div>
-		<!-- 		Vincular usuário -->
-		<div class="alinhadoDireita">
+		<!-- 				Vincular usuário -->
 
-			<button type="button" class="btn btn-primary" data-toggle="modal"
-				data-target="#listaUsuario">Vincular Usuário</button>
 
+		<div class="form-group">
+			<label class="col-form-label" for="codUsuario">Vincular
+				Usuário</label> <select class="custom-select" name="codUsuario">
+				<c:forEach items="${usuarios}" var="usuario">
+					<option value="${usuario.codUsuario}">${usuario.nome}</option>
+				</c:forEach>
+			</select>
 		</div>
+
+
+
+
+
+
+
+		<!-- 		<div class="alinhadoDireita"> -->
+
+		<!-- 			<button type="button" class="btn btn-primary" data-toggle="modal" -->
+		<!-- 				data-target="#listaUsuario">Vincular Usuário</button> -->
+
+		<!-- 		</div> -->
 
 		<div class="centralizarTexto">
 			<input class="btn btn-success" type="submit" value="Salvar" /> <a
@@ -120,45 +137,45 @@
 	</form>
 
 	<!-- 	Modal Usuários -->
-	<div class="modal fade" id="listaUsuario" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Vincular
-						Usuário</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<table class="table table-striped">
+	<!-- 	<div class="modal fade" id="listaUsuario" tabindex="-1" role="dialog" -->
+	<!-- 		aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+	<!-- 		<div class="modal-dialog" role="document"> -->
+	<!-- 			<div class="modal-content"> -->
+	<!-- 				<div class="modal-header"> -->
+	<!-- 					<h5 class="modal-title" id="exampleModalLabel">Vincular -->
+	<!-- 						Usuário</h5> -->
+	<!-- 					<button type="button" class="close" data-dismiss="modal" -->
+	<!-- 						aria-label="Close"> -->
+	<!-- 						<span aria-hidden="true">&times;</span> -->
+	<!-- 					</button> -->
+	<!-- 				</div> -->
+	<!-- 				<div class="modal-body"> -->
+	<!-- 					<table class="table table-striped"> -->
 
-						<tr>
-							<th scope="col">Vincular</th>
-							<th scope="col">Usuário</th>
-							<th scope="col">Nome</th>
-						</tr>
-						<c:forEach items="${usuarios}" var="usuario">
-							<tr>
-								<td><input type="radio" name="codUsuario"
-									value="${usuario.codUsuario}"><br></td>
+	<!-- 						<tr> -->
+	<!-- 							<th scope="col">Vincular</th> -->
+	<!-- 							<th scope="col">Usuário</th> -->
+	<!-- 							<th scope="col">Nome</th> -->
+	<!-- 						</tr> -->
+	<%-- 						<c:forEach items="${usuarios}" var="usuario"> --%>
+	<!-- 							<tr> -->
+	<!-- 								<td><input type="radio" name="codUsuario" -->
+	<%-- 									value="${usuario.codUsuario}"><br></td> --%>
 
-								<td>${usuario.login}</td>
-								<td>${usuario.nome}</td>
-							</tr>
-						</c:forEach>
-					</table>
+	<%-- 								<td>${usuario.login}</td> --%>
+	<%-- 								<td>${usuario.nome}</td> --%>
+	<!-- 							</tr> -->
+	<%-- 						</c:forEach> --%>
+	<!-- 					</table> -->
 
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
-						data-dismiss="modal">Fechar</button>
-					<button type="submit" class="btn btn-success">Salvar</button>
-				</div>
-			</div>
-		</div>
-	</div>
+	<!-- 				</div> -->
+	<!-- 				<div class="modal-footer"> -->
+	<!-- 					<button type="button" class="btn btn-secondary" -->
+	<!-- 						data-dismiss="modal">Fechar</button> -->
+	<!-- 					<button type="button" class="btn btn-success">Salvar</button> -->
+	<!-- 				</div> -->
+	<!-- 			</div> -->
+	<!-- 		</div> -->
+	<!-- 	</div> -->
 </body>
 </html>

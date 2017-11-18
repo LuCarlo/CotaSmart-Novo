@@ -17,6 +17,7 @@
 				type="text" class="form-control" name="nome" required="required"
 				disabled value="${usuario.nome}">
 		</div>
+		<input type="hidden" name="nome" value="${usuario.nome}">
 		<!-- Login -->
 		<div class="form-group">
 			<label class="col-form-label" for="login">Usuário</label> <input
@@ -35,13 +36,17 @@
 				type="password" class="form-control" name="senha"
 				required="required" value="${usuario.senha}">
 		</div>
-
-		Grupo do Usuário <br>
 		<div class="form-group">
-			<select id="inputState" class="form-control" required="required">
-				<option>Administrador</option>
-				<option>Fornecedor</option>
-			</select>
+			<c:if test="${usuario.administrador eq true}">
+				<label class="col-form-label" for="senha">Grupo de Usuário</label> <input
+				type="text" class="form-control" name="senha"
+				required="required" value="Administrador" disabled>
+			</c:if>
+			<c:if test="${usuario.administrador eq false}">
+				<label class="col-form-label" for="senha">Grupo de Usuário</label> <input
+				type="text" class="form-control" name="senha"
+				required="required" value="Fornecedor" disabled>
+			</c:if>
 		</div>
 
 

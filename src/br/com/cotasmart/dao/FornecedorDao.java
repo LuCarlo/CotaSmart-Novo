@@ -9,7 +9,6 @@ import java.util.List;
 
 import br.com.cotasmart.factory.ConnectionFactory;
 import br.com.cotasmart.modelo.Fornecedor;
-import br.com.cotasmart.modelo.Usuario;
 
 public class FornecedorDao {
 	private Connection connection;
@@ -22,9 +21,10 @@ public class FornecedorDao {
 		}
 	}
 
-	public void adiciona(Fornecedor fornecedor, Usuario usuario) {
+	public void adiciona(Fornecedor fornecedor) {
 
-		String sql = "INSERT INTO fornecedores (" + "nome, endereco, telefone1, telefone2, telefone3, cnpj, ativo, cidade, uf, codusuario) "
+		String sql = "INSERT INTO fornecedores ("
+				+ "nome, endereco, telefone1, telefone2, telefone3, cnpj, ativo, cidade, uf, codusuario) "
 				+ "VALUES (?,?,?,?,?,?,?,?,?,?) ";
 		try {
 
@@ -38,8 +38,7 @@ public class FornecedorDao {
 			stmt.setBoolean(7, true);
 			stmt.setString(8, fornecedor.getCidade());
 			stmt.setString(9, fornecedor.getUf());
-			stmt.setLong(10, usuario.getCodUsuario());
-			
+			stmt.setLong(10, fornecedor.getCodUsuario());
 
 			stmt.execute();
 			stmt.close();
@@ -139,8 +138,8 @@ public class FornecedorDao {
 
 	public Fornecedor buscaPorId(Long codFornecedor) {
 		try {
-			PreparedStatement stmt = this.connection
-					.prepareStatement("select * from fornecedores where codFornecedor = ?");
+			String sql = "SELECT f.*, u.nome as nomeUsuario FROM fornecedores f JOIN usuarios u on u.codusuario = f.codusuario  WHERE codFornecedor = ?";
+			PreparedStatement stmt = this.connection.prepareStatement(sql);
 			stmt.setLong(1, codFornecedor);
 			ResultSet rs = stmt.executeQuery();
 			if (rs.next()) {
@@ -154,6 +153,7 @@ public class FornecedorDao {
 				fornecedor.setTelefone3(rs.getString("telefone3"));
 				fornecedor.setCidade(rs.getString("cidade"));
 				fornecedor.setUf(rs.getString("uf"));
+				fornecedor.setNomeUsuario(rs.getString("nomeUsuario"));
 				stmt.close();
 				rs.close();
 				return fornecedor;
