@@ -61,7 +61,7 @@
 		</div>
 		<div class="centralizarTexto">
 			<input class="btn btn-success" type="submit" value="Salvar" /> <a
-				href="listaFornecedor"><button type="button"
+				href="listaCotacoes"><button type="button"
 					class="btn btn-danger">Cancelar</button></a>
 		</div>
 	</form>

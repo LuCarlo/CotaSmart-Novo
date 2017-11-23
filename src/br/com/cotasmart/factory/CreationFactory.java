@@ -96,12 +96,14 @@ public class CreationFactory {
 					"finalizado BOOLEAN,"+
 					"ativo BOOLEAN,"+
 					"datafinalizacao DATE,"+
+					"iniciou BOOLEAN, "+
 					"CONSTRAINT pk_cotacao PRIMARY KEY (codCotacao) );"+
 					" "+
 					"CREATE TABLE IF NOT EXISTS cotacaoProdutos ( "+
 					"codCotacaoProdutos SERIAL, "+
 					"codCotacao INTEGER REFERENCES cotacao ON DELETE CASCADE, "+
 					"codProduto INTEGER REFERENCES produtos ON DELETE CASCADE, " +
+					"quantidade INTEGER, " +
 					"codFornecedor INTEGER REFERENCES fornecedores ON DELETE CASCADE);"+
 					" "+
 					"CREATE TABLE IF NOT EXISTS empresa ("+

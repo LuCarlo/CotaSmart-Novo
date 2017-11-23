@@ -6,6 +6,15 @@ public class Produto {
 	private String codBarras;
 	private boolean ativo;
 	private Long codGrupoProdutos;
+	private int quantidade;
+
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
 
 	public String getCodBarras() {
 		return codBarras;

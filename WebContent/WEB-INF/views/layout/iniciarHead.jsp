@@ -11,6 +11,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" type="text/css" href="resources/css/estilo.css">
 <script type="text/javascript" src="resources/js/funcao.js"></script>
+
+
+
+<!-- calendário -->
+<!-- <link rel="stylesheet" -->
+<!-- 	href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" /> -->
+<!-- <script src="http://code.jquery.com/jquery-1.8.2.js"></script> -->
+<!-- <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script> -->
+
+
 <c:if test="${usuarioLogado.administrador eq true}">
 	<c:import url="../layout/menu.jsp" />
 </c:if>

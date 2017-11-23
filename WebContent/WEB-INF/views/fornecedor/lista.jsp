@@ -56,7 +56,9 @@
 									class="btn btn-success">Ativar</button></a>
 						</c:if></td>
 					<!-- Modal -->
-					<div class="modal fade" id="${fornecedor.codFornecedor}"
+					
+				</tr>
+				<div class="modal fade" id="${fornecedor.codFornecedor}"
 						tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 						aria-hidden="true">
 						<div class="modal-dialog" role="document">
@@ -77,7 +79,6 @@
 							</div>
 						</div>
 					</div>
-				</tr>
 			</c:forEach>
 		</table>
 	</div>

@@ -160,7 +160,6 @@ function voltar() {
 	}, 1000);
 }
 
-function erroLogin() {
-	alert("Login ou Senha Incorreto")
-}
+
+
 

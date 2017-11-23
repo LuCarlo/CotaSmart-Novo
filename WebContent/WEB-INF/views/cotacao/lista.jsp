@@ -15,9 +15,10 @@
 
 	<div class=centralizado>
 		<c:if test="${usuarioLogado.administrador eq true}">
-			<form class="alinhadoDireita" action="#">
-				<button type="submit" class="btn btn-info">Nova Cotação</button>
-			</form>
+			<div class="alinhadoDireita">
+				<a href="novaCotacao"><button class="btn btn-info" type="button">Iniciar
+						nova cotação</button> </a>
+			</div>
 		</c:if>
 		<table class="table table-striped">
 			<tr>
@@ -25,7 +26,7 @@
 				<th>Valor Total</th>
 				<th>Situação</th>
 				<th>Status</th>
-				
+
 				<th>Data Finalização</th>
 			</tr>
 			<c:forEach items="${cotacoes}" var="cotacao">
