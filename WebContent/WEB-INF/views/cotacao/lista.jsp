@@ -31,16 +31,16 @@
 			</tr>
 			<c:forEach items="${cotacoes}" var="cotacao">
 				<tr>
-					<td>${cotacao.data}</td>
+					<td>11/12/2017</td>
 					<td>R$ ${cotacao.valorTotal}</td>
 					<c:if test="${cotacao.finalizado eq true}">
 						<td style="color: red">Finalizado</td>
 					</c:if>
 					<c:if test="${cotacao.finalizado eq false}">
-						<td style="color: blue">Em Aberto</td>
+						<td style="color: blue"><a href="informarValorProdutos">Em Aberto</a></td>
 					</c:if>
 					<c:if test="${cotacao.ativo eq true}">
-						<td style="color: blue">Ativo</td>
+						<td style="color: blue">Ativo </td>
 					</c:if>
 					<c:if test="${cotacao.ativo eq false}">
 						<td style="color: red">Inativo</td>

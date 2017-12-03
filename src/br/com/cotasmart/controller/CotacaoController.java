@@ -27,11 +27,11 @@ public class CotacaoController {
 
 	@RequestMapping("novaCotacao")
 	public String form(Model model) {
-		CotacaoDao dao = new CotacaoDao();
+//		CotacaoDao dao = new CotacaoDao();
 		ProdutoDao produto = new ProdutoDao();
 
 		model.addAttribute("produtos", produto.getLista());
-		model.addAttribute("cotacao", dao.adicionaCotacao());
+//		model.addAttribute("cotacao", dao.adicionaCotacao());
 		return "cotacao/novo";
 	}
 
@@ -40,6 +40,11 @@ public class CotacaoController {
 		CotacaoDao dao = new CotacaoDao();
 		dao.adicionaProduto(produto, codCotacao, quantidade);
 		return "redirect:novaCotacao";
+	}
+	
+	@RequestMapping("informarValorProdutos")
+	public String informarValorProduto(){
+		return "cotacao/informarValor";
 	}
 
 }
