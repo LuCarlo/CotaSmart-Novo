@@ -23,6 +23,11 @@
 </head>
 <body>
 
+<div class="todoBody" style= " width: 900px; height: 900px;   
+  position: absolute;
+  top: 70%; 
+  margin-top: -25px">
+
 	<c:import url="../layout/iniciarBody.jsp" />
 
 	<h3 style="text-align: center">Selecione produtos para cotação</h3>
@@ -126,5 +131,6 @@
 		</div>
 
 	</form>
+	</div>
 </body>
 </html>
